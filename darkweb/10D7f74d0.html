@@ -47,16 +47,30 @@
         <br> <!-- or <hr> for a horizontal line -->
      
         <div class="d-grid gap-2">
-            <button class="btn btn-dark" type="button">오래된 신성 </button>
+            <button class="btn btn-dark" type="button">"시대의 빛을 간직한 책갈피"</button>
           </div>
-          <div class="tenor-gif-embed" data-postid="22070682" data-share-method="host" data-aspect-ratio="1.78771" data-width="100%"><a href="https://tenor.com/view/ninjala-ninjala-season6trailer-ninjala-season6-season6trailer-season6-gif-22070682">Ninjala Ninjala Season6trailer GIF</a>from <a href="https://tenor.com/search/ninjala-gifs">Ninjala GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+         
           <div id="eventT1"></div>
-          
+
+
           <div class="d-grid gap-2">
             <input type="hidden" id="tid" value="10">
-               <button class="btn btn-outline-success" id="treasureButton" type="submit">선물박스 열기 5-10</button>
+               <button class="btn btn-outline-success" id="treasureButton" type="submit">선물 열기 1-10</button>
           </div> 
       
+
+
+<div id="gifContainer" class="hidden">
+  <!-- GIF가 나타날 곳 -->
+  <img src="..\images\tresure\christmas-birthday.gif" alt="" width="300" height="300">
+   </div>
+
+<script>
+document.getElementById("treasureButton").addEventListener("click", function() {
+  // 버튼 클릭 시 GIF를 보여주는 함수
+  document.getElementById("gifContainer").classList.remove("hidden");
+});
+</script>
     
    <!-- End footer -->
 </main>
