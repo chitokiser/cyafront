@@ -127,11 +127,12 @@
 
         <div class="bg-light p-5 rounded">
           <h5>CYA 보물찾기에 오신걸 환영합니다 <a href="file/Cyadaowhitepaper1-1.pdf" download="Cyadaowhitepaper1-1.pdf"></a></h5>
-          <p>모바일 접속 시에는  메타마스크에서 https://go.netlify.app/ 입력 하세요</p>
+          <p>모바일 접속 시에는  메타마스크에서 https://cyadao.netlify.app/ 입력 하시고 즐겨찾기에 추가하세요</p>
           <p>보물을 찾으면 포인트를 얻을 수 있으며 포인트는 CYA로 교환하여 BNB와 교환됩니다</p>
           <p>포인트는 가맹점,보물찾기,게임등을 통해 무한으로 얻을 수 있습니다</p>
           <p>BNB시세와 관계없이 1CYA는 1USD를 수렴합니다</p>
           <p>보물박스를 열기위해서는 VET토큰이 필요합니다 / <strong>카카오톡 chito54 요청 시 VET토큰 Air drop</strong></p>
+          <li class="list-group-item">찾은보물 : <span id="Total"></span>CYA</li>
         </div>
         <button class="btn btn-outline-success"  role="button"  onclick="addTokenCya()">CYA Token 자동추가 </button>
         <button class="btn btn-outline-success"  role="button"  onclick="Addvet()">VET Token 자동추가 </button>
@@ -267,10 +268,39 @@
                     </div>
                   </div>  
       
-              
+                  <br> <!-- or <hr> for a horizontal line -->      
           
-      <br> <!-- or <hr> for a horizontal line -->
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-dark" type="button">CYA 기부자 리스트</button>
+                  </div>
+                  <li class="list-group-item">기부자 총원 : <span id="Holder"></span>Holder</li>
+                  <li class="list-group-item">기부 누적 총액 : <span id="Totaldo"></span>CYA</li>
+                  <li class="list-group-item">인출 가능액 : <span id="Totaldo2"></span>CYA</li>
+                  <li class="list-group-item">인출가능액이 1000CYA가 넘으면 기부자 이름으로 사회복지단체에 전액 기부합니다</li>
+                  
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">이름</th>
+                        <th scope="col">금액</th>
       
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td><span id="Cn1"></span></td>
+                        <td><span id="Cm1"></span></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td><span id="Cn2"></span></td>
+                        <td><span id="Cm2"></span></td>
+                      </tr>
+                  
+                    </tbody>
+                  </table>
         <br> <!-- or <hr> for a horizontal line -->
      
         <div class="d-grid gap-2">
@@ -298,6 +328,7 @@
 <script src="../p2e/vetgame.js"></script>
 <script src="../p2e/vetsoccer.js"></script>
 <script src="../p2e/vetlotto.js"></script>
+<script src="../src/index.js"></script>
 
 </body>
 

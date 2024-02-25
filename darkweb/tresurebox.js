@@ -2,6 +2,7 @@
 let address= {
   tresureAddr: "0x3da25c4F7831C1642a025a2f26451b4c24A74aEF",
   vetbankAddr: "0x27e8F277826AE9aD67178978d2c89a52f7a5177A",
+  adAddr: "0x9A27a782FD75C9Af44A875F327d52Ee662891d5C",
    }
 let abi = {
 
@@ -18,6 +19,19 @@ let abi = {
       "function myinfo(address user) public view returns (uint256,uint256,uint256,uint256,uint256,uint256,address,address)",
       ],
 
+      ad: [
+     
+        "function g2(uint id) public view returns(string memory)",
+        "function donation(uint pay) public",
+        "function nameregi(string memory _name) public",
+        " function g1() public view returns (uint256)",
+        "function g4(address user) public view returns (uint)", 
+        "function g5(uint _did) public view returns (uint)",
+        "function did() public view returns (uint256)",
+        "function totaldo() public view returns (uint256)",
+        "function myinfo(uint num) public view returns (string,uint256,addres,uint)",
+        ],
+
 };
 
 
@@ -30,7 +44,25 @@ document.addEventListener("DOMContentLoaded", function() {
       let tvl = await treasureContract.total();
       document.getElementById("Total").innerHTML = parseFloat(tvl / 1e18).toFixed(4);
       
+
+      let adContract = new ethers.Contract(address.adAddr, abi.ad, provider);  //보물관련 메세지 출력 
+      let ad0 = await adContract.g2(0);
+      let ad1 = await adContract.g2(1);
+      let ad2 = await adContract.g2(2);
+      let ad3 = await adContract.g2(3);
+      let ad4 = await adContract.g2(4);
+      let ad5 = await adContract.g2(5);
+      document.getElementById("Ad0").innerHTML = (ad0);
+      document.getElementById("Ad1").innerHTML = (ad1);
+      document.getElementById("Ad2").innerHTML = (ad2);
+      document.getElementById("Ad3").innerHTML = (ad3);
+      document.getElementById("Ad4").innerHTML = (ad4);
+      document.getElementById("Ad5").innerHTML = (ad5);
+
       
+
+   
+
       // Register event listener after contract initialization
       treasureContract.on('reward', (amount) => {
         console.log('Reward Amount:', amount);
