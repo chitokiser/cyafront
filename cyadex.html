@@ -33,14 +33,17 @@
                         <a class="nav-link" href="../index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../cyadex.html">CYA교환소</a>
+                        <a class="nav-link" href="../cyadex.html">코인&토큰 교환소</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../alliance/vet.html">포인트가맹점</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../p2e/p2e.html">포인트더벌기</a>
+                        <a class="nav-link" href="../p2e/p2e.html">보물찾기</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="../mypage.html">회원등록/지갑연결</a>
+                  </li>
                  
                 </ul>
             </div>
@@ -48,6 +51,44 @@
     </nav>
     
   <!--여기까지 헤드 -->
+
+
+  
+  <div class="alert alert-secondary" role="alert">
+          
+    <div class="container-box">
+      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+        <div class="col">
+          <div class="p-3 border bg-light">1BNB=$<span id="bPrice">-</span></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">1BNB=<span id="cPrice">-</span>CYA</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">1CYA = $1</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">1CYA = <span id="bPrice2">-</span>BNB</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">1VET= <span id="Vetp">-</span>CYA</div>
+        </div>
+      
+        <div class="col">
+          <div class="p-3 border bg-light">참여자 = <span id="Mem">-</span>holder</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">BNN잔고  = <span id="Tvlbnb">-</span>CYA</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">VET유통량 : <span id="Tvl2">-</span>VET</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!--여기까지 대쉬보드 -->
+
 
     
         <div class="bg-light p-5 rounded">
@@ -97,8 +138,48 @@
           <span onclick="sellCya()" style="cursor: pointer;" class="input-group-text" id="basic-addon2">교환하기</span>
         </div>
       </div> 
+ <!--여기까지 CYA 교환소-->
 
+ <link href="../css/vetboard.css" rel="stylesheet">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h3 class="h3">VET가격 변화</h3>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+              <span data-feather="calendar"></span>
+              <span id="calD">-</span>
+            </button>
+          </div>
+        </div>
+        <div class="my-4 w-100" id="myChart" style="width: 900px; height: 380px;"></div>
+        <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+          integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+          crossorigin="anonymous"></script>
+        <script src="../alliance/vetboard.js"></script>
+      </div>
+    
       
+
+      <div class="d-grid gap-2">
+        <button class="btn btn-dark" type="button">VET거래소 </button>
+      </div>
+      
+       <!--Chart -->    
+        
+        <div class="input-group mb-3">
+          <input type="text" id="buycustnum" class="form-control" placeholder="구매할  VET수량 입력" aria-label="CYA"
+            aria-describedby="basic-addon2">
+          <span class="input-group-text" id="basic-addon2" style="cursor: pointer;" onclick="Vbuy()">VET 사기</span>
+        </div>
+    </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="sellcustnum" placeholder="판매할 VET수량 입력,레벨5이상이어야 하며 판매가능하며 1회거래 때마다 레벨1씩 줄어듭니다" aria-label="CYA"
+            aria-describedby="basic-addon2">
+          <span class="input-group-text" id="basic-addon2" style="cursor: pointer;" onclick="Vsell()">VET 팔기
+            </span>
+        </div>
+    </div>
         
 
       <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
@@ -111,7 +192,9 @@
     <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="text/javascript"></script>  
-    <script src="cyadex.js"></script>   
+    <script src="../src/cyadex.js"></script>   
+    <script src="../src/topinfo.js"></script>   
+
             
   </body>
 

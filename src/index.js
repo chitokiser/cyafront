@@ -1,8 +1,8 @@
 
 let address= {
-    tresureAddr: "0x3da25c4F7831C1642a025a2f26451b4c24A74aEF",
-    vetbankAddr: "0x27e8F277826AE9aD67178978d2c89a52f7a5177A",
-    adAddr: "0x9A27a782FD75C9Af44A875F327d52Ee662891d5C"
+    tresure: "0x3da25c4F7831C1642a025a2f26451b4c24A74aEF",
+    vetbank: "0x27e8F277826AE9aD67178978d2c89a52f7a5177A",
+    ad: "0x9A27a782FD75C9Af44A875F327d52Ee662891d5C"  // donation 
      }
   let abi = {
   
@@ -36,46 +36,59 @@ let address= {
   
   };
   
-  let Ttopdate = async () => {
+  async function updateData() {
     try {
-      const provider = new ethers.providers.JsonRpcProvider('https://opbnb-mainnet-rpc.bnbchain.org');
-      let treasureContract = new ethers.Contract(address.tresureAddr, abi.tresure, provider);
-      let tvl = await treasureContract.total();
-      document.getElementById("Total").innerHTML = parseFloat(tvl / 1e18).toFixed(4);  // 찾은 보물
-      
-      let adContract = new ethers.Contract(address.adAddr, abi.ad, provider);  // 기부자 명단 출력
-      
-      let didno = await adContract.did();   // 기부자 총인원
-      let withdo = await adContract.g1();  // 인출가능 액
-      let totaldo = await adContract.totaldo();  // 기부총액
-      let totalad = await adContract.totaldo();  // 광고총액
+        const provider = new ethers.providers.JsonRpcProvider('https://opbnb-mainnet-rpc.bnbchain.org');
+        
+        // Treasure contract
+        const treasureContract = new ethers.Contract(address.tresure, abi.tresure, provider);
+        const tvl = await treasureContract.total();
+        document.getElementById("Total").innerHTML = (tvl / 1e18).toFixed(4); // treasure found
+        
+        // Advertising contract
+        const adContract = new ethers.Contract(address.ad, abi.ad, provider);
+        const didno = await adContract.did(); // Total number of donors
+        const totaldo = await adContract.totaldo(); // Total donation amount
+     
+     
+        document.getElementById("Holder").innerHTML = (didno); // Total number of donors
+        document.getElementById("Totaldo").innerHTML = (totaldo / 1e18); // Total donation amount
+        document.getElementById("Totaldo2").innerHTML = (totaldo / 1e18); // Withdrawable amount
+        
+        // Clear existing donor list
+        const donorListElement = document.getElementById("donor-list");
+        donorListElement.innerHTML = "";
+        
+        // Fetch donor information dynamically
+        for (let i = 1; i <= didno; i++) {
+            const coninfo = await adContract.myinfo(i); // Donation information
+            const donorName = coninfo[0];
+            const donationAmount = coninfo[1] / 1e18;
+
+            // Create table row
+            const newRow = document.createElement("tr");
+            newRow.innerHTML = `
+                <th scope="row">${i}</th>
+                <td>${donorName}</td>
+                <td>${donationAmount}</td>
+            `;
+
+            // Append row to donor list
+            donorListElement.appendChild(newRow);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+updateData();
 
   
-      document.getElementById("Holder").innerHTML = (didno);  // 기부자 총인원
-      document.getElementById("Totaldo").innerHTML = (totaldo/1e18);  // 기부총액
-      document.getElementById("Totaldo2").innerHTML = (totaldo/1e18);  // 인출가능액
-    //   document.getElementById("Withdo").innerHTML = ((withdo-totalad)/1e18);  // 인출가능액
-      
-      let coninfo1 = await adContract.myinfo(1);  // 기부1 정보
-      document.getElementById("Cn1").innerHTML = (coninfo1[0]); // 기부자 이름
-      document.getElementById("Cm1").innerHTML = (coninfo1[1]/1e18); // 기부 금액
-      
-      //2번 기부자
-      let coninfo2 = await adContract.myinfo(2);  // 기부1 정보
-      document.getElementById("Cn2").innerHTML = (coninfo2[0]); // 기부자 이름
-      document.getElementById("Cm2").innerHTML = (coninfo2[1]/1e18); // 기부 금액
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
-  
-  Ttopdate(); 
-  
   async function Donation() {   //기부하기
-    // Connect to the user's Web3 provider
+  
     let userProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
     
-    // Request adding Binance Smart Chain to wallet
+ 
     await window.ethereum.request({
         method: "wallet_addEthereumChain",
         params: [{
@@ -91,7 +104,6 @@ let address= {
         }]
     });
     
-    // Request access to user's accounts
     await userProvider.send("eth_requestAccounts", []);
     
     // Get the signer (account) from the provider

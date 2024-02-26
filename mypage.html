@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    
+    <meta name="generator" content="Hugo 0.88.1">
+    <link rel="shortcut icon" href="https://i.ibb.co/3YqKwff/bg.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+      
+    <link rel="stylesheet" href="\css\main.css">
+    <link rel="stylesheet" href="\css\delotto.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="/images/170x58.png" alt="" width="88" height="32">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../cyadex.html">코인&토큰 교환소</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../alliance/vet.html">포인트가맹점</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../p2e/p2e.html">보물찾기</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="../mypage.html">회원등록/지갑연결</a>
+                  </li>
+                 
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+  <!--여기까지 헤드 -->
+
+
+  
+  <div class="alert alert-secondary" role="alert">
+          
+    <div class="container-box">
+      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+        <div class="col">
+          <div class="p-3 border bg-light">1BNB=$<span id="bPrice">-</span></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">1BNB=<span id="cPrice">-</span>CYA</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">1CYA = $1</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">1CYA = <span id="bPrice2">-</span>BNB</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">1VET= <span id="Vetp">-</span>CYA</div>
+        </div>
+      
+        <div class="col">
+          <div class="p-3 border bg-light">참여자 = <span id="Mem">-</span>holder</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">BNN잔고  = <span id="Tvlbnb">-</span>CYA</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">VET유통량 : <span id="Tvl2">-</span>VET</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!--여기까지 대쉬보드 -->
+             
+  
+  <li class="list-group-item">추천인 어카운트를 입력 보물회원에 가입하세요(무료).멤버가입에 성공하면 레벨1이 되며 VET를거래할 수 있습니다 </li>
+  <li class="list-group-item"><button class="btn btn-outline-success" id="randomButton">추천인 어카운트 자동출력 자동입력</button>
+    <p id="randomData" style="display: none;"></p>
+
+           <div class="input-group mb-3">
+            <input type="text" id="mentoaddress" class="form-control" placeholder="추천인 어카운트를 입력 후 회원에 가입하세요(무료)" aria-label="CYA"
+              aria-describedby="basic-addon2">
+            <span class="input-group-text" id="basic-addon2" style="cursor: pointer;" onclick="Memberjoin()">VET회원가입하기</span>
+          </div>
+        </li>        
+
+  </div>
+
+
+<div class="d-grid gap-2">
+<button class="btn btn-dark" type="button">Decentralized VET Games</button>
+</div>
+
+<ul class="list-group">
+<li class="list-group-item">블럭체인 난수를 활용하여 가장 공정한 게임을 제공합니다</li>
+<li class="list-group-item">VET토큰과 VET가맹점에서 확보한 포인트를 지갑연결하여 확인 하세요</li>
+<li class="list-group-item">추천인 어카운트를 입력 후 회원에 가입하세요(무료).멤버가입에 성공하면 레벨1이 되며 VET를거래하고 보물을 찾으  수 있습니다 </li>
+
+
+    <ul class="list-group">
+        <div class="d-grid gap-2">
+            <button class="btn btn-outline-success" type="submit" onclick="MemberLogin()"> 지갑 연결</button>
+            </div>   
+            <ul class="list-group">
+              <li class="list-group-item">나의 VET : <span id="Myvet"></span>VET</li>
+              <li class="list-group-item">나의 VET 시가총액 : <span id="Mytvl"></span>CYA</li>
+              <li class="list-group-item">누적인출액 : <span id="Tpoint"></span>CYA</li>
+              <li class="list-group-item">인출가능포인트 : <span id="Point"></span>p</li>
+              <li class="list-group-item">이번배당 예정 포인트 : <span id="Mypay"></span>p</li>
+              <li class="list-group-item">나의 경험치 : <span id="Myexp"></span>EXP</li>
+              <li class="list-group-item">나의 레벨 : <span id="Mylev"></span></li>
+              <li class="list-group-item">레벨업까지 필요한 경험치 : <span id="Expneeded"></span>EXP</li>
+              <li class="list-group-item">멘티<span id="Mymenty">-</span>holder</li>
+              <li class="list-group-item">멘토<span id="Mymento">-</span></li>
+              <li class="list-group-item">에이젼트<span id="Myagent">-</span></li>
+              <li class="list-group-item"></li>
+              <li class="list-group-item"> <button type="button" class="btn btn-outline-dark position-relative" cursor:
+                  pointer; onclick="Levelup()">
+                  레벨업
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark" id="Mylev2">-</span></button>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-success progress-bar-striped" id="LevelBar" role="progressbar"
+                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                  </div>
+              </li> 
+             
+          <li class="list-group-item">다음 배당까지 남은 시간 <span id="Left">-</span></li>
+          
+      </ul>
+
+      <div class="d-grid gap-2">
+    <button class="btn btn-outline-success" type="submit" onclick="Allow()">배당받기</button>
+    <li class="list-group-item"> VET을 가지고 있으면 매주 1회 포인트를 배당받습니다</li>
+    <li class="list-group-item"> 포인트는 즉시 CYA로 인출 가능합니다</li>
+    <li class="list-group-item">1회 배당받을때마다 5000경험치가 추가됩니다</li>
+    <li class="list-group-item">포인트 레버리지를 하려면 VET토큰이 소진되며 포인트가 일부 20%확률로 손실될 수도 있습니다</li>
+
+  <div class="d-grid gap-2">
+    <button class="btn btn-outline-success" type="submit" onclick="Withdraw()">포인트인출하기 x0.8
+    </button>
+</div> 
+    <button class="btn btn-outline-danger" type="submit" onclick="Withdraw2()">포인트 레버리지 x0.002~5배
+    </button>
+    <div class="d-grid gap-2">
+      <li class="list-group-center"><span id="eventV1"></span></li>
+    </div>
+
+    
+               
+    <div class="d-grid gap-2">
+      <button class="btn btn-dark" type="button">멘토 등록</button>
+    </div>
+     
+     <div class="input-group mb-3">
+         <input type="text" id="Mento" class="form-control" placeholder="여기에 등록할 멘토주소 입력하세요" aria-label="CYA"
+           aria-describedby="basic-addon2">
+         <span class="input-group-text" id="basic-addon2" style="cursor: pointer;" onclick="Mentoadd()">멘토등록하기</span>
+       </div>
+ 
+     <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+      <p>&copy; 2022 CYA DAO, Inc. All rights reserved.</p>
+      <p>We do not collect personal information</p>
+      <p><a class="nav-link" href="https://t.me/cyadaokorea">CYA DAO 텔레그램 오픈채팅방</a></p>
+ <!-- End footer -->
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> 
+<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script type="text/javascript"></script>  
+<script src="../src/topinfo.js"></script> 
+<script src="../src/mypage.js"></script> 
+  </body>
+</html>

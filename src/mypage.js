@@ -36,18 +36,7 @@ let contractAddress = {    //vet bank랑 똑같음 alliance만 제외
   
          const provider = new ethers.providers.JsonRpcProvider('https://opbnb-mainnet-rpc.bnbchain.org');
     
-         let vetbankContract = new ethers.Contract(contractAddress.vetbankAddr, contractAbi.vetbank, provider);
-         let cprice = await vetbankContract.getprice(); 
-      
-         let mems = parseInt (await vetbankContract.getsum()); //회원총원
-         let tvl = await vetbankContract.g1(); 
-         let tvl2 = await vetbankContract.g11(); 
-         let ttax = await vetbankContract.totaltax(); 
-         document.getElementById("Vetprice").innerHTML=  parseFloat(cprice/1e18).toFixed(6);
-         document.getElementById("Mem").innerHTML = parseInt(mems+20);
-         document.getElementById("Tvl").innerHTML = parseFloat(tvl/1e18).toFixed(2);
-         document.getElementById("Tvl2").innerHTML = parseInt(tvl2);
-         document.getElementById("Ttax").innerHTML = parseFloat(ttax/1e18).toFixed(4);
+       
   
          vetbankContract.on('getdepo', (amount) => {
           console.log('레버리지된금액:', amount);

@@ -32,21 +32,23 @@
         erc20: [
           "function approve(address spender, uint256 amount) external returns (bool)",
           "function allowance(address owner, address spender) external view returns (uint256)"
-        ]
+        ],
+  
       };
       const topDataSync = async () => {
     
         // BNB Price
-const responseBinanceTicker = await axios.get('https://api.binance.com/api/v3/ticker/price?symbol=BNBUSDT');
-const bnbPrice = parseFloat(responseBinanceTicker.data.price);
-
-
-       // ethers setup
-       let provider = new ethers.providers.JsonRpcProvider('https://opbnb-mainnet-rpc.bnbchain.org');
-       let cyadexContract = new ethers.Contract(contractAddress.cyadexAddr, contractAbi.cyadex, provider);
+        const responseBinanceTicker = await axios.get('https://api.binance.com/api/v3/ticker/price?symbol=BNBUSDT');
+        const bnbPrice = parseFloat(responseBinanceTicker.data.price);
      
+
         };
      
+
+    
+      
+
+      
      
         const addTokenCya = async () => {
           await window.ethereum.request({

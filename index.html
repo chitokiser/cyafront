@@ -33,14 +33,17 @@
                         <a class="nav-link" href="../index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../cyadex.html">CYA교환소</a>
+                        <a class="nav-link" href="../cyadex.html">코인&토큰 교환소</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../alliance/vet.html">포인트가맹점</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../p2e/p2e.html">포인트더벌기</a>
+                        <a class="nav-link" href="../p2e/p2e.html">보물찾기</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="../mypage.html">회원등록/지갑연결</a>
+                  </li>
                  
                 </ul>
             </div>
@@ -65,17 +68,17 @@
           <div class="p-3 border bg-light">1CYA = $1</div>
         </div>
         <div class="col">
-          <div class="p-3 border bg-light">1CYA = <span id="cPrice2">-</span>BNB</div>
+          <div class="p-3 border bg-light">1CYA = <span id="bPrice2">-</span>BNB</div>
         </div>
         <div class="col">
-          <div class="p-3 border bg-light">1VET= <span id="Vetprice">-</span>CYA</div>
+          <div class="p-3 border bg-light">1VET= <span id="Vetp">-</span>CYA</div>
         </div>
       
         <div class="col">
           <div class="p-3 border bg-light">참여자 = <span id="Mem">-</span>holder</div>
         </div>
         <div class="col">
-          <div class="p-3 border bg-light">계약잔고  = <span id="Tvl">-</span>CYA</div>
+          <div class="p-3 border bg-light">BNN잔고  = <span id="Tvlbnb">-</span>CYA</div>
         </div>
         <div class="col">
           <div class="p-3 border bg-light">VET유통량 : <span id="Tvl2">-</span>VET</div>
@@ -138,131 +141,49 @@
         <button class="btn btn-outline-success"  role="button"  onclick="Addvet()">VET Token 자동추가 </button>
         <P><a class="link" href="https://opbnbscan.com"></a></P>
    
-        <link href="../css/vetboard.css" rel="stylesheet">
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h3 class="h3">VET가격 변화</h3>
-          <div class="btn-toolbar mb-2 mb-md-0">
-            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-              <span data-feather="calendar"></span>
-              <span id="calD">-</span>
-            </button>
-          </div>
+        
+      
+        <div class="d-grid gap-2">
+          <button class="btn btn-dark" type="button">서비스 바로 가기</button>
         </div>
-        <div class="my-4 w-100" id="myChart" style="width: 900px; height: 380px;"></div>
-        <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
-        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-        <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
-          integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
-          crossorigin="anonymous"></script>
-        <script src="../alliance/vetboard.js"></script>
-      </div>
-      
-      
-              <li class="list-group-item">추천인 어카운트를 입력 보물회원에 가입하세요(무료).멤버가입에 성공하면 레벨1이 되며 VET를거래할 수 있습니다 </li>
-              <li class="list-group-item"><button class="btn btn-outline-success" id="randomButton">추천인 어카운트 자동출력 자동입력</button>
-                <p id="randomData" style="display: none;"></p>
-        
-                       <div class="input-group mb-3">
-                        <input type="text" id="mentoaddress" class="form-control" placeholder="추천인 어카운트를 입력 후 회원에 가입하세요(무료)" aria-label="CYA"
-                          aria-describedby="basic-addon2">
-                        <span class="input-group-text" id="basic-addon2" style="cursor: pointer;" onclick="Memberjoin()">VET회원가입하기</span>
-                      </div>
-                    </li>        
-          
-              </div>
-      
-         
-          <div class="d-grid gap-2">
-            <button class="btn btn-dark" type="button">Decentralized VET Games</button>
-          </div>
-        
-          <ul class="list-group">
-            <li class="list-group-item">블럭체인 난수를 활용하여 가장 공정한 게임을 제공합니다</li>
-            <li class="list-group-item">VET토큰과 VET가맹점에서 확보한 포인트를 지갑연결하여 확인 하세요</li>
-            <li class="list-group-item">추천인 어카운트를 입력 후 회원에 가입하세요(무료).멤버가입에 성공하면 레벨1이 되며 VET를거래하고 보물을 찾으  수 있습니다 </li>
-       
 
-                <ul class="list-group">
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-outline-success" type="submit" onclick="MemberLogin()"> 지갑 연결</button>
-                        </div>   
-                        <ul class="list-group">
-                          <li class="list-group-item">나의 VET : <span id="Myvet"></span>VET</li>
-                          <li class="list-group-item">나의 VET 시가총액 : <span id="Mytvl"></span>CYA</li>
-                          <li class="list-group-item">누적인출액 : <span id="Tpoint"></span>CYA</li>
-                          <li class="list-group-item">인출가능포인트 : <span id="Point"></span>p</li>
-                          <li class="list-group-item">이번배당 예정 포인트 : <span id="Mypay"></span>p</li>
-                          <li class="list-group-item">나의 경험치 : <span id="Myexp"></span>EXP</li>
-                          <li class="list-group-item">나의 레벨 : <span id="Mylev"></span></li>
-                          <li class="list-group-item">레벨업까지 필요한 경험치 : <span id="Expneeded"></span>EXP</li>
-                          <li class="list-group-item">멘티<span id="Mymenty">-</span>holder</li>
-                          <li class="list-group-item">멘토<span id="Mymento">-</span></li>
-                          <li class="list-group-item">에이젼트<span id="Myagent">-</span></li>
-                          <li class="list-group-item"></li>
-                          <li class="list-group-item"> <button type="button" class="btn btn-outline-dark position-relative" cursor:
-                              pointer; onclick="Levelup()">
-                              레벨업
-                              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark" id="Mylev2">-</span></button>
-                            <div class="progress">
-                              <div class="progress-bar progress-bar-success progress-bar-striped" id="LevelBar" role="progressbar"
-                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-                              </div>
-                          </li> 
-                         
-                      <li class="list-group-item">다음 배당까지 남은 시간 <span id="Left">-</span></li>
-                      
-                  </ul>
-          
-                  <div class="d-grid gap-2">
-                <button class="btn btn-outline-success" type="submit" onclick="Allow()">배당받기</button>
-                <li class="list-group-item"> VET을 가지고 있으면 매주 1회 포인트를 배당받습니다</li>
-                <li class="list-group-item"> 포인트는 즉시 CYA로 인출 가능합니다</li>
-                <li class="list-group-item">1회 배당받을때마다 5000경험치가 추가됩니다</li>
-                <li class="list-group-item">포인트 레버리지를 하려면 VET토큰이 소진되며 포인트가 일부 20%확률로 손실될 수도 있습니다</li>
-           
-              <div class="d-grid gap-2">
-                <button class="btn btn-outline-success" type="submit" onclick="Withdraw()">포인트인출하기 x0.8
-                </button>
-            </div> 
-                <button class="btn btn-outline-danger" type="submit" onclick="Withdraw2()">포인트 레버리지 x0.002~5배
-                </button>
-                <div class="d-grid gap-2">
-                  <li class="list-group-center"><span id="eventV1"></span></li>
-                </div>
-        
-                <div class="d-grid gap-2">
-                    <button class="btn btn-dark" type="button">VET거래소 </button>
-                  </div>
-                  
-                      
-                    
-                    <div class="input-group mb-3">
-                      <input type="text" id="buycustnum" class="form-control" placeholder="구매할  VET수량 입력" aria-label="CYA"
-                        aria-describedby="basic-addon2">
-                      <span class="input-group-text" id="basic-addon2" style="cursor: pointer;" onclick="Vbuy()">VET 사기</span>
-                    </div>
-                </div>
-                    <div class="input-group mb-3">
-                      <input type="text" class="form-control" id="sellcustnum" placeholder="판매할 VET수량 입력,레벨5이상이어야 하며 판매가능하며 1회거래 때마다 레벨1씩 줄어듭니다" aria-label="CYA"
-                        aria-describedby="basic-addon2">
-                      <span class="input-group-text" id="basic-addon2" style="cursor: pointer;" onclick="Vsell()">VET 팔기
-                        </span>
-                    </div>
-                </div>
+
+        <div class="card-container" style="display: flex;">
+          <div class="card" style="width: 18rem; margin-right: 10px;">
+            <div class="card-body">
+              <h5 class="card-title">회원등록</h5>
+              <p class="card-text">어떠한 개인정보 제공 없이 메타마스크 설치 후 버튼 한번이면 지갑연결 끝</p>
+              <a href="../mypage.html" class="btn btn-success">회원등록</a>
+            </div>
+          </div>
+        </div> 
+
+
+        <div class="card-container" style="display: flex;">
+          <div class="card" style="width: 18rem; margin-right: 10px;">
+            <div class="card-body">
+              <h5 class="card-title">코인&토큰 교환소</h5>
+              <p class="card-text">opBNB,CYA,VET 각종 코인&토큰 교환소</p>
+              <a href="../mypage.html" class="btn btn-success">교환소</a>
+            </div>
+          </div>
+        </div> 
+
+
                     <div class="card-container" style="display: flex;">
                       <div class="card" style="width: 18rem; margin-right: 10px;">
                         <div class="card-body">
-                          <h5 class="card-title">포인트 더 벌기</h5>
+                          <h5 class="card-title">포인트 확보</h5>
                           <p class="card-text">가맹점을 이용하시면 포인트를 더 얻을 수 있습니다</p>
-                          <a href="../uto/vet.html" class="btn btn-primary">Go to Vet Aillance</a>
+                          <a href="../uto/vet.html" class="btn btn-secondary">가맹점가기</a>
                         </div>
                       </div>
                     </div> 
                       <div class="card" style="width: 18rem;">
                         <div class="card-body">
                           <h5 class="card-title">보물찾기</h5>
-                          <p class="card-text">단서를 보고 VET 토큰과 NFT 토큰을 획득 하세요</p>
-                          <a href="../p2e/tresure.html" class="btn btn-primary">Go to Tresure</a>
+                          <p class="card-text">단서를 보고 보물을 찾으세요</p>
+                          <a href="../p2e/tresure.html" class="btn btn-primary">보물찾기</a>
                         </div>
                       </div>
                     </div>
@@ -277,8 +198,37 @@
                   <li class="list-group-item">기부 누적 총액 : <span id="Totaldo"></span>CYA</li>
                   <li class="list-group-item">인출 가능액 : <span id="Totaldo2"></span>CYA</li>
                   <li class="list-group-item">인출가능액이 1000CYA가 넘으면 기부자 이름으로 사회복지단체에 전액 기부합니다</li>
+                  <div class="input-group mb-3">
+                    <input type="text" id="Mento" class="form-control" placeholder="여기에 기부할 CYA를 입력하세요" aria-label="CYA"
+                      aria-describedby="basic-addon2">
+                    <span class="input-group-text" id="basic-addon2" style="cursor: pointer;" onclick="Donation()">기부하기</span>
+                  </div>
+                  <div class="input-group mb-3">
+                  <input type="text" id="Mento" class="form-control" placeholder="기부후 이름을 등록하면 이름이 보입니다" aria-label="CYA"
+                  aria-describedby="basic-addon2">
+                <span class="input-group-text" id="basic-addon2" style="cursor: pointer;" onclick="Nameregi()">기부자 이름등록하기</span>
+              </div>
+              <div class="input-group mb-3">
+                <input type="text" id="Mento" class="form-control" placeholder="기부후 이름을 등록하면 이름이 보입니다" aria-label="CYA"
+                aria-describedby="basic-addon2">
+              <span class="input-group-text" id="basic-addon2" style="cursor: pointer;" onclick="Nameregi()">기부자 이름수정하기</span>
+            </div>
+            </div>
+
+            <table>
+              <thead>
+                  <tr>
+                      <th scope="col">No.</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Donation Amount</th>
+                  </tr>
+              </thead>
+              <tbody id="donor-list">
+                  <!-- Dynamically generated donor list will be inserted here -->
+              </tbody>
+          </table>
                   
-                  <table class="table">
+                  <!-- <table class="hall-of-fame">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -300,36 +250,26 @@
                       </tr>
                   
                     </tbody>
-                  </table>
+                  </table> -->
         <br> <!-- or <hr> for a horizontal line -->
-     
-        <div class="d-grid gap-2">
-            <button class="btn btn-dark" type="button">멘토 등록하기 </button>
-          </div>
-    
-        <li class="list-group-item">에이젼트가 멘토 등록시에는 DAO특성상 바이낸스에서 거래능력이 증명된 사람만 등록해 주시기 바랍니다</li>
-        <div class="input-group mb-3">
-            <input type="text" id="Mento" class="form-control" placeholder="여기에 등록할 멘토주소 입력하세요" aria-label="CYA"
-              aria-describedby="basic-addon2">
-            <span class="input-group-text" id="basic-addon2" style="cursor: pointer;" onclick="Mentoadd()">멘토등록하기</span>
-          </div>
-      
+       
       </div>
       </div>
-  
-    
+      <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+        <p><a class="nav-link" href="https://twitter.com/choecheolung8">CYADAO소식</a></p>
+        <p>We do not collect personal information</p>
+        <p><a class="nav-link" href="https://t.me/cyadaokorea">CYA DAO 텔레그램 오픈채팅방</a></p>
    <!-- End footer -->
+
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript"></script>
-<script src="../p2e/vetgame.js"></script>
-<script src="../p2e/vetsoccer.js"></script>
-<script src="../p2e/vetlotto.js"></script>
-<script src="../src/index.js"></script>
 
+<script src="../src/index.js"></script>
+<script src="../src/topinfo.js"></script>
 </body>
 
 </html>
