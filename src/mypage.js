@@ -36,9 +36,10 @@ let contractAddress = {    //vet bank랑 똑같음 alliance만 제외
   
          const provider = new ethers.providers.JsonRpcProvider('https://opbnb-mainnet-rpc.bnbchain.org');
     
-       
+         let vetContract = new ethers.Contract(contractAddress.vetbankAddr, contractAbi.vetbank, provider);
+     
   
-         vetbankContract.on('getdepo', (amount) => {
+         vetContract.on('getdepo', (amount) => {
           console.log('레버리지된금액:', amount);
           document.getElementById('eventV1').innerText = `GetMoney ${amount/1e18} CYA`;
       });

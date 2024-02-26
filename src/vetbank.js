@@ -31,22 +31,28 @@ let Vaddress = {    //vet bank랑 똑같음 alliance만 제외
     ],
   };
   
-    let Vettop = async () => {
- 
-  
-         const provider = new ethers.providers.JsonRpcProvider('https://opbnb-mainnet-rpc.bnbchain.org');
-    
-         let vetbankContract = new ethers.Contract(Vaddress.vetbank,Vabi.vetbank, provider);
-         let cprice = await vetbankContract.getprice(); 
-  
-         vetbankContract.on('getdepo', (amount) => {
-          console.log('레버리지된금액:', amount);
-          document.getElementById('eventV1').innerText = `GetMoney ${amount/1e18} CYA`;
-      });
-  
-  
-    };
-  
+  let Vettop = async () => {
+    // Initialize provider
+    const provider = new ethers.providers.JsonRpcProvider('https://opbnb-mainnet-rpc.bnbchain.org');
+
+    // Initialize contract instance
+    let vetbankContract = new ethers.Contract(Vaddress.vetbank, Vabi.vetbank, provider);
+
+    // Get the current price
+    let cprice = await vetbankContract.getprice(); 
+
+    // Listen for the 'getdepo' event
+    vetbankContract.on('getdepo', (amount) => {
+        // Log amount to console for debugging
+        console.log('Cashback:', amount);
+
+        // Convert amount to human-readable format
+        const points = amount / 1e18;
+
+        // Update the DOM with the points value
+        document.getElementById('eventV1').innerText = `Get Money: ${points} CYA`;
+    });
+};
   
     let Memberjoin = async () => {
       let userProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
