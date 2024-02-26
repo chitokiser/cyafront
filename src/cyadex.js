@@ -4,6 +4,7 @@
         cyadexAddr: "0x3900609f4b3C635ae1cFC84F4f86eF7166c6139e",
         cyamemAddr: "0x3Fa37ba88e8741Bf681b911DB5C0F9d6DF99046f",   
         cyabankAddr:"0xE823F9d04faF94a570409DC0076580ba74820B4c",
+        vetbank: "0x27e8F277826AE9aD67178978d2c89a52f7a5177A",  
         erc20: "0xFA7A4b67adCBe60B4EFed598FA1AC1f79becf748"
       };
       const contractAbi = {
@@ -19,6 +20,10 @@
           "function sum() public view returns(uint256)",
           "function catbal() public view returns(uint256)"
         ],
+        vetbank: [
+          "function buyvet(uint _num) public returns(bool) ",
+          "function sellvet(uint _num) public returns(bool) ",
+          ],
 
         cyabank: [
           "function g1() public view virtual returns(uint256)",
@@ -49,22 +54,6 @@
       
 
       
-     
-        const addTokenCya = async () => {
-          await window.ethereum.request({
-            method: 'wallet_watchAsset',
-            params: {
-              type: 'ERC20',
-              options: {
-                address: "0xFA7A4b67adCBe60B4EFed598FA1AC1f79becf748",
-                symbol: "CYA",
-                decimals: 18, 
-                // image: tokenImage,
-              },
-            },
-          });
-        }
-    
 
         const buyCya = async () => {
           const userProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
@@ -120,7 +109,68 @@
           await cyadexContract.sell(quantity);
         };
   
- 
+   
+
+        
+    let Vbuy = async () => {
+      let userProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
+      await window.ethereum.request({
+        method: "wallet_addEthereumChain",
+        params: [{
+            chainId: "0xCC",
+            rpcUrls: ["https://opbnb-mainnet-rpc.bnbchain.org"],
+            chainName: "opBNB",
+            nativeCurrency: {
+                name: "BNB",
+                symbol: "BNB",
+                decimals: 18
+            },
+            blockExplorerUrls: ["https://opbnbscan.com"]
+        }]
+    });
+      await userProvider.send("eth_requestAccounts", []);
+      let signer = userProvider.getSigner();
+      let vetContract = new ethers.Contract(contractAddress.vetbank,contractAbi.vetbank, signer);
+  
+      try {
+        await vetContract.buyvet(document.getElementById('Buyvetnum').value);
+      } catch(e) {
+        alert(e.data.message.replace('execution reverted: ',''))
+      }
+    };
+  
+  
+    let Vsell = async () => {
+      let userProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
+      await window.ethereum.request({
+        method: "wallet_addEthereumChain",
+        params: [{
+            chainId: "0xCC",
+            rpcUrls: ["https://opbnb-mainnet-rpc.bnbchain.org"],
+            chainName: "opBNB",
+            nativeCurrency: {
+                name: "BNB",
+                symbol: "BNB",
+                decimals: 18
+            },
+            blockExplorerUrls: ["https://opbnbscan.com"]
+        }]
+    });
+      await userProvider.send("eth_requestAccounts", []);
+      let signer = userProvider.getSigner();
+  
+      let vetContract = new ethers.Contract(contractAddress.vetbank,contractAbi.vetbank, signer);
+  
+      try {
+        await vetContract.sellvet(document.getElementById('Sellvetnum').value);
+      } catch(e) {
+        alert(e.data.message.replace('execution reverted: ',''))
+      }
+    };
+  
+
+
+
 
         (async () => {
           topDataSync();

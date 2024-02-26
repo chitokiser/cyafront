@@ -23,7 +23,6 @@ let address= {
        
           "function g2(uint id) public view returns(string memory)",
           "function donation(uint pay) public",
-          "function nameregi(string memory _name) public",
           " function g1() public view returns (uint256)",
           "function g4(address user) public view returns (uint)", 
           "function g5(uint _did) public view returns (uint)",
@@ -110,19 +109,58 @@ updateData();
     let signer = userProvider.getSigner();
   
     // Instantiate the treasure contract with the signer
-    let tresureContract = new ethers.Contract(address.tresureAddr, abi.tresure, signer);
+    const adContract = new ethers.Contract(address.ad, abi.ad, signer);
     
-    // Retrieve the treasure ID from HTML input
-    let treasureId = document.getElementById("tid").value;
-    
-    // Log the retrieved value (for debugging)
-    console.log("Treasure ID:", treasureId);
+  
     
     try {
-        // Call the contract's 'openbox' function with the retrieved treasure ID
-        await tresureContract.openbox(treasureId);
-    } catch(e) {
-        // Handle any errors that occur during the transaction
+        const quantity = ethers.utils.parseUnits(document.getElementById('Domoney').value, 18);
+        await adContract.donation(quantity);
+
+    } catch(e) { 
         alert(e.data.message.replace('execution reverted: ',''));
     }
   };
+
+
+
+
+  let Nameregi = async () => {   //이름변경하기
+
+        let userProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
+
+        await window.ethereum.request({
+            method: "wallet_addEthereumChain",
+            params: [{
+                chainId: "0xCC",
+                rpcUrls: ["https://opbnb-mainnet-rpc.bnbchain.org"],
+                chainName: "opBNB",
+                nativeCurrency: {
+                    name: "BNB",
+                    symbol: "BNB",
+                    decimals: 18
+                },
+                blockExplorerUrls: ["https://opbnbscan.com"]
+            }]
+        });
+
+        await userProvider.send("eth_requestAccounts", []);
+
+        // Get the signer (account) from the provider
+        let signer = userProvider.getSigner();
+
+        // Instantiate the treasure contract with the signer
+        const adContract = new ethers.Contract(address.ad, abi.ad, signer);
+
+        try {
+            await  adContract.nameregi(document.getElementById('Contributor').value); 
+          } catch(e) {
+            alert(e.data.message.replace('execution reverted: ',''))
+          }
+        
+      };
+    
+
+  
+    
+    

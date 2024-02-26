@@ -1,9 +1,9 @@
-let contractAddress = {    //vet bank랑 똑같음 alliance만 제외
-    vetbankAddr: "0x27e8F277826AE9aD67178978d2c89a52f7a5177A",  
+let Vaddress = {    //vet bank랑 똑같음 alliance만 제외
+    vetbank: "0x27e8F277826AE9aD67178978d2c89a52f7a5177A",  
   
   
   };
-  let contractAbi = {
+  let Vabi = {
   
     vetbank: [
     " function g1() public view virtual returns(uint256)",
@@ -36,18 +36,8 @@ let contractAddress = {    //vet bank랑 똑같음 alliance만 제외
   
          const provider = new ethers.providers.JsonRpcProvider('https://opbnb-mainnet-rpc.bnbchain.org');
     
-         let vetbankContract = new ethers.Contract(contractAddress.vetbankAddr, contractAbi.vetbank, provider);
+         let vetbankContract = new ethers.Contract(Vaddress.vetbank,Vabi.vetbank, provider);
          let cprice = await vetbankContract.getprice(); 
-      
-         let mems = parseInt (await vetbankContract.getsum()); //회원총원
-         let tvl = await vetbankContract.g1(); 
-         let tvl2 = await vetbankContract.g11(); 
-         let ttax = await vetbankContract.totaltax(); 
-         document.getElementById("Vetprice").innerHTML=  parseFloat(cprice/1e18).toFixed(6);
-         document.getElementById("Mem").innerHTML = parseInt(mems+20);
-         document.getElementById("Tvl").innerHTML = parseFloat(tvl/1e18).toFixed(2);
-         document.getElementById("Tvl2").innerHTML = parseInt(tvl2);
-         document.getElementById("Ttax").innerHTML = parseFloat(ttax/1e18).toFixed(4);
   
          vetbankContract.on('getdepo', (amount) => {
           console.log('레버리지된금액:', amount);
@@ -77,7 +67,7 @@ let contractAddress = {    //vet bank랑 똑같음 alliance만 제외
       await userProvider.send("eth_requestAccounts", []);
       let signer = userProvider.getSigner();
   
-      let vetContract = new ethers.Contract(contractAddress.vetbankAddr, contractAbi.vetbank, signer);
+      let vetContract = new ethers.Contract(Vaddress.vetbankAddr,Vabi.vetbank, signer);
   
       try {
         await vetContract.memberjoin(document.getElementById('mentoaddress').value);
@@ -104,7 +94,7 @@ let contractAddress = {    //vet bank랑 똑같음 alliance만 제외
     });
       await userProvider.send("eth_requestAccounts", []);
       let signer = userProvider.getSigner();
-      let vetContract = new ethers.Contract(contractAddress.vetbankAddr, contractAbi.vetbank, signer);
+      let vetContract = new ethers.Contract(Vaddress.vetbankAddr,Vabi.vetbank, signer);
       let myvet = await vetContract.g8(await signer.getAddress());
       let mypay = await vetContract.getpay(await signer.getAddress());
       let myvetvalue = await vetContract.getprice() * await myvet;
@@ -205,7 +195,7 @@ let contractAddress = {    //vet bank랑 똑같음 alliance만 제외
       await userProvider.send("eth_requestAccounts", []);
       let signer = userProvider.getSigner();
   
-      let vetContract = new ethers.Contract(contractAddress.vetbankAddr, contractAbi.vetbank, signer);
+      let vetContract = new ethers.Contract(Vaddress.vetbankAddr,Vabi.vetbank, signer);
       
       try {
         await vetContract.levelup(); 
@@ -236,7 +226,7 @@ let contractAddress = {    //vet bank랑 똑같음 alliance만 제외
     await userProvider.send("eth_requestAccounts", []);
     let signer = userProvider.getSigner();
   
-    let vetContract = new ethers.Contract(contractAddress.vetbankAddr, contractAbi.vetbank, signer);
+    let vetContract = new ethers.Contract(Vaddress.vetbankAddr,Vabi.vetbank, signer);
   
     try {
       await vetContract.allowcation();
@@ -265,7 +255,7 @@ let contractAddress = {    //vet bank랑 똑같음 alliance만 제외
       await userProvider.send("eth_requestAccounts", []);
       let signer = userProvider.getSigner();
   
-      let vetContract = new ethers.Contract(contractAddress.vetbankAddr, contractAbi.vetbank, signer);
+      let vetContract = new ethers.Contract(Vaddress.vetbankAddr,Vabi.vetbank, signer);
   
       try {
         await vetContract.withdraw();
@@ -295,7 +285,7 @@ let contractAddress = {    //vet bank랑 똑같음 alliance만 제외
       await userProvider.send("eth_requestAccounts", []);
       let signer = userProvider.getSigner();
   
-      let vetContract = new ethers.Contract(contractAddress.vetbankAddr, contractAbi.vetbank, signer);
+      let vetContract = new ethers.Contract(Vaddress.vetbank,Vabi.vetbank, signer);
   
       try {
         await vetContract.withdraw2();
@@ -305,78 +295,9 @@ let contractAddress = {    //vet bank랑 똑같음 alliance만 제외
       }
     };
   
-    let Vbuy = async () => {
-      let userProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
-      await window.ethereum.request({
-        method: "wallet_addEthereumChain",
-        params: [{
-            chainId: "0xCC",
-            rpcUrls: ["https://opbnb-mainnet-rpc.bnbchain.org"],
-            chainName: "opBNB",
-            nativeCurrency: {
-                name: "BNB",
-                symbol: "BNB",
-                decimals: 18
-            },
-            blockExplorerUrls: ["https://opbnbscan.com"]
-        }]
-    });
-      await userProvider.send("eth_requestAccounts", []);
-      let signer = userProvider.getSigner();
-      let vetContract = new ethers.Contract(contractAddress.vetbankAddr, contractAbi.vetbank, signer);
-  
-      try {
-        await vetContract.buyvet(document.getElementById('buycustnum').value);
-      } catch(e) {
-        alert(e.data.message.replace('execution reverted: ',''))
-      }
-    };
-  
-  
-    let Vsell = async () => {
-      let userProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
-      await window.ethereum.request({
-        method: "wallet_addEthereumChain",
-        params: [{
-            chainId: "0xCC",
-            rpcUrls: ["https://opbnb-mainnet-rpc.bnbchain.org"],
-            chainName: "opBNB",
-            nativeCurrency: {
-                name: "BNB",
-                symbol: "BNB",
-                decimals: 18
-            },
-            blockExplorerUrls: ["https://opbnbscan.com"]
-        }]
-    });
-      await userProvider.send("eth_requestAccounts", []);
-      let signer = userProvider.getSigner();
-  
-      let vetContract = new ethers.Contract(contractAddress.vetbankAddr, contractAbi.vetbank, signer);
-  
-      try {
-        await vetContract.sellvet(document.getElementById('sellcustnum').value);
-      } catch(e) {
-        alert(e.data.message.replace('execution reverted: ',''))
-      }
-    };
   
   
   
-    const Addvet = async () => {
-      await window.ethereum.request({
-        method: 'wallet_watchAsset',
-        params: {
-          type: 'ERC20',
-          options: {
-            address: "0xEBe3a75eeD0408EC145E1c5C5c131B212cf21788",
-            symbol: "VET",
-            decimals: 0, 
-            // image: tokenImage,
-          },
-        },
-      });
-    }
   
     Vettop();
    

@@ -352,20 +352,7 @@ let contractAddress = {    //vet bank랑 똑같음 alliance만 제외
   
   
   
-    const Addvet = async () => {
-      await window.ethereum.request({
-        method: 'wallet_watchAsset',
-        params: {
-          type: 'ERC20',
-          options: {
-            address: "0xEBe3a75eeD0408EC145E1c5C5c131B212cf21788",
-            symbol: "VET",
-            decimals: 0, 
-            // image: tokenImage,
-          },
-        },
-      });
-    }
+  
   
     Vettop();
    

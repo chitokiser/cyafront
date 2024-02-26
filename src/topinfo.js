@@ -4,7 +4,8 @@
         cyamemAddr: "0x3Fa37ba88e8741Bf681b911DB5C0F9d6DF99046f",   
         cyabankAddr:"0xE823F9d04faF94a570409DC0076580ba74820B4c",
         vetbankAddr: "0x27e8F277826AE9aD67178978d2c89a52f7a5177A",
-        erc20: "0xFA7A4b67adCBe60B4EFed598FA1AC1f79becf748"
+        erc20: "0xFA7A4b67adCBe60B4EFed598FA1AC1f79becf748",
+        
       };
       const Tabi = {
         cyadex: [
@@ -91,4 +92,36 @@ document.getElementById("bPrice2").innerHTML=(bnbPrice/1000).toFixed(3);
      TDataSync();
 
 
-      
+     const Addvet = async () => {
+      await window.ethereum.request({
+        method: 'wallet_watchAsset',
+        params: {
+          type: 'ERC20',
+          options: {
+            address: "0xEBe3a75eeD0408EC145E1c5C5c131B212cf21788",
+            symbol: "VET",
+            decimals: 0, 
+            // image: tokenImage,
+          },
+        },
+      });
+    }
+
+    const addTokenCya = async () => {
+      await window.ethereum.request({
+        method: 'wallet_watchAsset',
+        params: {
+          type: 'ERC20',
+          options: {
+            address: "0xFA7A4b67adCBe60B4EFed598FA1AC1f79becf748",
+            symbol: "CYA",
+            decimals: 18, 
+            // image: tokenImage,
+          },
+        },
+      });
+    }
+
+
+
+    
