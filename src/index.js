@@ -110,11 +110,15 @@ updateData();
   
     // Instantiate the treasure contract with the signer
     const adContract = new ethers.Contract(address.ad, abi.ad, signer);
-    
+    const quantity = ethers.utils.parseUnits(document.getElementById('Domoney').value, 18);
+    if (quantity < 1e17) {
+        alert("입력값이 0.1보다 작으면 실행할 수 없습니다.");
+        return; // 함수를 여기서 종료합니다.
+    }
   
     
     try {
-        const quantity = ethers.utils.parseUnits(document.getElementById('Domoney').value, 18);
+       
         await adContract.donation(quantity);
 
     } catch(e) { 
