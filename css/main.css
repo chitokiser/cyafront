@@ -199,7 +199,7 @@
     #eventT1
     
      {
-      font-size: 2em; /* Default font size */
+      font-size: 1.5em; /* Default font size */
       color: rgb(238, 155, 11); /* Set font color to green */
       transform: perspective(1000px) rotateY(10deg);
   }
@@ -241,4 +241,8 @@ tbody tr:nth-child(even) {
   border: 2px solid #ff00ff; /* neon border color */
   padding: 10px;
   border-radius: 5px;
+}
+
+.hidden {
+  display: none;
 }

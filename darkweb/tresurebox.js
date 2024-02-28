@@ -49,10 +49,15 @@ let Vettop = async () => {
   tresureContract.on('reward', (amount) => {
    console.log('찾은보물:', amount);
    document.getElementById('eventT1').innerText = ` GetPoint ${amount/1e18} P`;
+   treasureBox.style.display = "none";
+   const eventDiv = document.getElementById('eventDiv');
+   eventDiv.classList.remove('hidden');
 });
 
 
-};
+}
+
+
 
 Vettop ();
 
@@ -127,11 +132,16 @@ async function Openbox() {
    
 
     document.getElementById("Tpoint").innerHTML= (tpoint/1E18).toFixed(4); 
-    document.getElementById("Point").innerHTML= (point/1E18).toFixed(4);   //찾을 돈 돈
+    document.getElementById("Point").innerHTML= (point/1E18).toFixed(4);   //찾을 돈 
 
   
   };
 
 
-
+  window.onload = function() {
+    // 음악 재생을 위한 audio 요소 가져오기
+    const backgroundMusic = document.getElementById("backgroundMusic");
+    // 음악 재생
+    backgroundMusic.play();
+}
 
