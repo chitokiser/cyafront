@@ -6,13 +6,7 @@ let address= {
      }
   let abi = {
   
-    tresure: [
-        "function openbox(uint _id) public",
-        "function  total( ) public view returns(uint)",
-        "function myinfo(address user) public view returns (uint256,uint256,uint256,uint256,uint256,uint256,uint256,)",
-        "function getpower(address user) public view returns(uint)",
-        "event reward(uint amount);"
-      ],
+  
   
       vetbank: [
        
@@ -40,9 +34,7 @@ let address= {
         const provider = new ethers.providers.JsonRpcProvider('https://opbnb-mainnet-rpc.bnbchain.org');
         
         // Treasure contract
-        const treasureContract = new ethers.Contract(address.tresure, abi.tresure, provider);
-        const tvl = await treasureContract.total();
-        document.getElementById("Total").innerHTML = (tvl / 1e18).toFixed(4); // treasure found
+     
         
         // Advertising contract
         const adContract = new ethers.Contract(address.ad, abi.ad, provider);

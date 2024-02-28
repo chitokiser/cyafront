@@ -5,6 +5,7 @@
         cyabankAddr:"0xE823F9d04faF94a570409DC0076580ba74820B4c",
         vetbankAddr: "0x27e8F277826AE9aD67178978d2c89a52f7a5177A",
         erc20: "0xFA7A4b67adCBe60B4EFed598FA1AC1f79becf748",
+        tresure: "0x3da25c4F7831C1642a025a2f26451b4c24A74aEF",
         
       };
       const Tabi = {
@@ -58,6 +59,15 @@
           "function levelup() public ",
           "event getdepo(uint amount);"
           ],
+
+
+          tresure: [
+            "function openbox(uint _id) public",
+            "function  total( ) public view returns(uint)",
+            "function myinfo(address user) public view returns (uint256,uint256,uint256,uint256,uint256,uint256,uint256,)",
+            "function getpower(address user) public view returns(uint)",
+            "event reward(uint amount);"
+          ],
       };
 
       const TDataSync = async () => {
@@ -66,7 +76,7 @@
 const responseBinanceTicker = await axios.get('https://api.binance.com/api/v3/ticker/price?symbol=BNBUSDT');
 const bnbPrice = parseFloat(responseBinanceTicker.data.price);
 document.getElementById("bPrice").innerHTML=bnbPrice.toFixed(2);
-document.getElementById("cPrice").innerHTML=(bnbPrice).toFixed(0);
+document.getElementById("cPrice").innerHTML=(bnbPrice).toFixed(2);
 document.getElementById("bPrice2").innerHTML=(bnbPrice/1000).toFixed(3);
 
 
@@ -76,7 +86,11 @@ document.getElementById("bPrice2").innerHTML=(bnbPrice/1000).toFixed(3);
        let cyadexContract = new ethers.Contract(Taddress.cyadexAddr,Tabi.cyadex, provider);
        let tvlbnb = await cyadexContract.balance() ;  // BNB잔고
        document.getElementById("Tvlbnb").innerHTML = parseFloat(tvlbnb/1e18).toFixed(4); // BNB잔고
+       
 
+       const treasureContract = new ethers.Contract(Taddress.tresure, Tabi.tresure, provider);
+     const tvl = await treasureContract.total();
+document.getElementById("Total").innerHTML = (tvl / 1e18).toFixed(4); // treasure found
 
        let vetbankContract = new ethers.Contract(Taddress.vetbankAddr, Tabi.vetbank, provider);
         
