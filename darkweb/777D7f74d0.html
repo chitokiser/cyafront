@@ -18,15 +18,12 @@
 
 <body>
   
-    <img id="treasureBox" width="100%" height="auto" src="..\images\tresure\box1\congratulations-emma.gif" alt="보물 상자 이미지">
+    <img id="treasureBox" width="100%" height="auto" src="..\images\tresure\box1\box1.gif" alt="보물 상자 이미지">
     <input type="hidden" id="tid" value="7">
     <button class="btn btn-outline-success" id="treasureButton" type="submit">BOX열기1-7</button> 
-    <button id="playMusicButton"><i class="fas fa-play"></i> </button>
-    <audio id="backgroundMusic" autoplay loop>
-      <source src="../images/tresure/box1/djbdam.mp3" type="audio/mpeg">
-
-  </audio>
-  
+    <audio id="backgroundMusic" preload="auto">
+      <source src="../images/tresure/box1/box1song.mp3" type="audio/mpeg">
+    </audio>
   
     <!-- 페이지 숨겨짐 -->
    <div id="eventDiv" class="hidden">  
@@ -48,12 +45,12 @@
             <li class="list-group-item">인출 가능 포인트 : <span id="Point"></span>CYA</li>
           </div>
           <div id="eventT1"></div>
-          <img id="gifImage" width="100%" height="auto" src="../images/tresure/box1/ninjala.gif" alt="이벤트 발생 GIF">
+          <img id="gifImage" width="100%" height="auto" src="../images/tresure/boxopen1.gif" alt="이벤트 발생 GIF">
         <div class="d-grid gap-2">
             <button class="btn btn-dark" type="button">"과거의 돌 중에서 남겨진 수수께끼가 숨어 있다"</button>
           </div>
-            
-          </div> 
+            </div> 
+            <br>
          
  
    <!-- End footer -->
@@ -64,7 +61,7 @@
 <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript"></script>
-<script src="tresurebox.js"></script>
+<script src="../src/tresurebox.js"></script>
 
 
 
