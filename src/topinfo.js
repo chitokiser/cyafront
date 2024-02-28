@@ -88,10 +88,7 @@ document.getElementById("bPrice2").innerHTML=(bnbPrice/1000).toFixed(3);
        document.getElementById("Tvlbnb").innerHTML = parseFloat(tvlbnb/1e18).toFixed(4); // BNB잔고
        
 
-       const treasureContract = new ethers.Contract(Taddress.tresure, Tabi.tresure, provider);
-     const tvl = await treasureContract.total();
-document.getElementById("Total").innerHTML = (tvl / 1e18).toFixed(4); // treasure found
-
+   
        let vetbankContract = new ethers.Contract(Taddress.vetbankAddr, Tabi.vetbank, provider);
         
      
@@ -101,6 +98,13 @@ document.getElementById("Total").innerHTML = (tvl / 1e18).toFixed(4); // treasur
        document.getElementById("Mem").innerHTML = parseInt(mems);
        document.getElementById("Vetp").innerHTML = parseFloat(vetp/1e18).toFixed(4);
        document.getElementById("Tvl2").innerHTML = parseInt(tvl2);
+
+
+
+       const treasureContract = new ethers.Contract(Taddress.tresure, Tabi.tresure, provider);
+       const tvl = await treasureContract.total();
+       document.getElementById("Total").innerHTML = (tvl / 1e18).toFixed(4); // treasure found
+  
         };
      
      TDataSync();
