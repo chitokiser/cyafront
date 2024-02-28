@@ -199,7 +199,7 @@
     #eventT1
     
      {
-      font-size: 1.5em; /* Default font size */
+      font-size: 1em; /* Default font size */
       color: rgb(238, 155, 11); /* Set font color to green */
       transform: perspective(1000px) rotateY(10deg);
   }

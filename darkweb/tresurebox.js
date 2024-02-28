@@ -141,7 +141,13 @@ async function Openbox() {
   window.onload = function() {
     // 음악 재생을 위한 audio 요소 가져오기
     const backgroundMusic = document.getElementById("backgroundMusic");
+    
+    // 음악 재생 후 한 번만 실행되도록 이벤트 추가
+    backgroundMusic.addEventListener("ended", function() {
+        // 루프 중지
+        backgroundMusic.loop = false;
+    });
+
     // 음악 재생
     backgroundMusic.play();
 }
-
