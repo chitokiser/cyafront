@@ -246,3 +246,20 @@ tbody tr:nth-child(even) {
 .hidden {
   display: none;
 }
+
+
+    @keyframes borderGlow {
+        0% {
+            border-color: #fff; /* 초기 테두리 색상 */
+        }
+        50% {
+            border-color: #f00; /* 번쩍거리는 중간 색상 */
+        }
+        100% {
+            border-color: #fff; /* 초기 테두리 색상 */
+        }
+    }
+
+    .glow {
+        animation: borderGlow 1s infinite alternate; /* 애니메이션 적용 */
+    }
