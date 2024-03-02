@@ -1,17 +1,16 @@
 
 let address= {
-    tresure: "0x7f9DC432e1B4e5D0C5994ee3439bADDb922dc061",
+    tresure: "0x7f9DC432e1B4e5D0C5994ee3439bADDb922dc061", //tresure2 주소
 
      }
   let abi = {
   
     tresure: [
-        "function openbox(uint _id) public",
         "function  total( ) public view returns(uint)",
         "function myinfo(address user) public view returns (uint256,uint256,uint256,uint256,uint256,uint256,uint256,)",
         "function getpower(address user) public view returns(uint)",
         "function getcollect(address _address) external view returns (uint256[] memory)",
-        "function cllect(address _address,uint num) external view returns (uint)",
+        "function cllect(address _address,uint num) external view returns (uint)",  //카드 컬렉터
         "event reward(uint amount);"
       ],
   
@@ -65,13 +64,12 @@ let address= {
         // 카드를 표시할 HTML 문자열 생성
         let html = '';
         mytresure.forEach((card, index) => {
-            // 이미지 파일의 경로 생성 C:\Users\Y700-17ISK\Desktop\project\cyadao\www\tresurefront\images\mytresure
-            const imagePath = `../images/mytresure/card${index}.png`; // 이미지 파일의 경로를 동적으로 생성
+            const imagePath = `../images/mytresure/card${card}.png`; // 이미지 파일의 경로를 동적으로 생성
 
             // 카드 HTML 코드 추가
             html += `
-                <div id="Mycard${index}" class="card">
-                    <img src="${imagePath}" alt="Card ${index}">
+                <div id="Mycard${card}" class="card">
+                    <img src="${imagePath}" alt="Card ${card}">
                     <div>보물번호 : ${card}</div>
                 </div>
             `;
@@ -82,8 +80,8 @@ let address= {
 
         // 각 카드에 이벤트 리스너 추가 (예시로 추가한 코드)
         mytresure.forEach((card, index) => {
-            document.getElementById(`Mycard${index}`).addEventListener('click', () => {
-                console.log(`Card ${index} clicked: ${card}`);
+            document.getElementById(`Mycard${card}`).addEventListener('click', () => {
+                console.log(`Card ${card} clicked: ${card}`);
                 // 여기에 클릭 이벤트 처리 로직을 추가하세요.
             });
         });

@@ -1,6 +1,6 @@
 
 let address= {
-    tresure: "0x7f9DC432e1B4e5D0C5994ee3439bADDb922dc061",
+    tresure: "0x7f9DC432e1B4e5D0C5994ee3439bADDb922dc061",  //트레져2
     vetbankAddr: "0x27e8F277826AE9aD67178978d2c89a52f7a5177A",
     adAddr: "0x9A27a782FD75C9Af44A875F327d52Ee662891d5C",
      }
@@ -12,7 +12,7 @@ let address= {
         "function myinfo(address user) public view returns (uint256,uint256,uint256,uint256,uint256,uint256,uint256,)",
         "function getpower(address user) public view returns(uint)",
         "function getcollect(address _address) external view returns (uint256[] memory)",
-        "function cllect(address _address,uint num) external view returns (uint)",
+        "function cllect(address _address,uint num) external view returns (uint)",  //수집
         "event reward(uint amount);"
       ],
   
