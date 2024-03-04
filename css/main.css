@@ -197,10 +197,11 @@
     #eventV1,
     #eventA1,
     #eventT1
+  
     
      {
       font-size: 1em; /* Default font size */
-      color: rgb(238, 155, 11); /* Set font color to green */
+      color: rgb(250, 136, 6); /* Set font color to green */
       transform: perspective(1000px) rotateY(10deg);
   }
   
@@ -286,3 +287,7 @@ tbody tr:nth-child(even) {
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* 그림자 효과 */
       animation: neon 1.5s infinite alternate; /* 애니메이션 적용 */
   }
+
+
+
+  

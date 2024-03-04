@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    
+    <meta name="generator" content="Hugo 0.88.1">
+    <link rel="shortcut icon" href="https://i.ibb.co/3YqKwff/bg.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="\css\quiz.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="/images/170x58.png" alt="" width="88" height="32">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../cyadex.html">코인&토큰 교환소</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../alliance/vet.html">포인트가맹점</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="../quiz/quiz.html">퀴즈</a>
+                  </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../tresure/tresurelist.html">보물찾기</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="../mypage.html">회원등록/지갑연결</a>
+                  </li>
+                 
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+  <!--여기까지 헤드 -->
+
+
+  
+  <div class="alert alert-secondary" role="alert">
+          
+    <div class="container-box">
+      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+        <div class="col">
+          <div class="p-3 border bg-light">1BNB=$<span id="bPrice">-</span></div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">1BNB=<span id="cPrice">-</span>CYA</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">1CYA = $1</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">1CYA = <span id="bPrice2">-</span>BNB</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">1VET= <span id="Vetp">-</span>CYA</div>
+        </div>
+      
+        <div class="col">
+          <div class="p-3 border bg-light">참여자 = <span id="Mem">-</span>holder</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">BNN잔고  = <span id="Tvlbnb">-</span>CYA</div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light">VET유통량 : <span id="Tvl2">-</span>VET</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!--여기까지 대쉬보드 -->
+
+
+        <div class="quiz-box">
+          <h5><strong>CYA 퀴즈에 오신걸 환영합니다</strong></h5>
+          <p>정확하게 답을 적어 넣으시면 포인트+아이템 보상을 받습니다</p>
+          <p>답을 제출 하려면 일정량의 VET이 필요 합니다</p>
+        </div>
+    </div>     
+        <div class="pretty-box">
+          <ul class="list-group">
+            <li class="list-group-item">퀴즈누적상금: <span id="Qtotal"></span>CYA</li>
+          </ul>
+        </div>
+      </div>
+
+        <button class="btn btn-outline-success"  role="button"  onclick="addTokenCya()">CYA Token 자동추가 </button>
+        <button class="btn btn-outline-success"  role="button"  onclick="Addvet()">VET Token 자동추가 </button>
+        <P><a class="link" href="https://opbnbscan.com"></a></P>
+   
+        
+      
+        <div class="d-grid gap-2">
+          <button class="btn btn-dark" type="button">보물을 찾으면 힌트를 얻을 수 있습니다</button>
+        </div>
+
+        <table>
+            
+            <div id="eventQ1"></div>
+            <div id="eventQ2"></div>
+            <tr>
+              <th>ID</th>
+              <th>문제</th>
+              <th>정답제출</th>
+            </tr>
+        
+            <tr>
+                <td>2-1-0</td>
+                <td>괴로움 속에서 가치가 있는 의미를 찾아가는 것?</td>
+                <td>
+                    <input type="hidden" class="qid" value="0">
+                    <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                    <button class="btn btn-outline-success treasureButton" value="Answer" type="submit">정답제출2-1-0</button>
+                </td>
+              
+            </tr>
+            
+            <tr>
+                <td>2-1-1</td>
+                <td>가능성으로 가득한 여정?</td>
+                <td>
+                    <input type="hidden" class="qid" value="1">
+                    <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                    <button class="btn btn-outline-success treasureButton" value="Answer" type="submit">정답제출2-1-1</button>
+                </td>
+           
+            </tr>
+
+
+            <tr>
+                <td>2-1-2</td>
+                <td>나는 혁신하지 못하면 죽습니다</td>
+                <td>
+                    <input type="hidden" class="qid" value="2">
+                    <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                    <button class="btn btn-outline-success treasureButton" value="Answer" type="submit">정답제출2-1-2</button>
+                </td>
+         
+            </tr>
+
+            <tr>
+                <td>2-1-3</td>
+                <td>나이가 들어도 대화가 가능하다면 행하라</td>
+                <td>
+                    <input type="hidden" class="qid" value="3">
+                    <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                    <button class="btn btn-outline-success treasureButton" value="Answer" type="submit">정답제출2-1-3</button>
+                </td>
+      
+            </tr>
+            
+            <tr>
+            <td>2-1-4</td>
+                <td>흥미로운 사람이 아무도 없는 곳</td>
+                <td>
+                    <input type="hidden" class="qid" value="4">
+                    <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                    <button class="btn btn-outline-success treasureButton" value="Answer" type="submit">정답제출2-1-4</button>
+                </td>
+            </tr>
+
+           
+            <tr>
+            <td>2-1-5</td>
+           
+            <td>단지해석만 존재할 뿐</td>
+            <td>
+                <input type="hidden" class="qid" value="5">
+                <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                <button class="btn btn-outline-success treasureButton" value="Answer" type="submit">정답제출2-1-5</button>
+            </td>   
+        </tr>
+         
+
+        <tr>
+        <td>2-1-6</td>
+        <td>분별력을 마비시키고 나를 구속시키는 것</td>
+        <td>
+            <input type="hidden" class="qid" value="6">
+            <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+            <button class="btn btn-outline-success treasureButton" value="Answer" type="submit">정답제출2-1-6</button>
+        </td>   
+    </tr>
+
+    <tr>
+        <td>2-1-7</td>
+        <td>갑옷으로 삼으면 나를 해칠 수 없는것</td>
+        <td>
+            <input type="hidden" class="qid" value="7">
+            <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+            <button class="btn btn-outline-success treasureButton" value="Answer" type="submit">정답제출2-1-7</button>
+        </td>   
+    </tr>
+
+    <tr>
+        <td>2-1-8</td>
+        <td>키작은 남자도 크게 드리울 수 있는것</td>
+        <td>
+            <input type="hidden" class="qid" value="8">
+            <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+            <button class="btn btn-outline-success treasureButton" value="Answer" type="submit">정답제출2-1-8</button>
+        </td>   
+    </tr>
+
+    <tr>
+        <td>2-1-9</td>
+        <td>모두 이어져 있는것</td>
+        <td>
+            <input type="hidden" class="qid" value="9">
+            <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+            <button class="btn btn-outline-success treasureButton" value="Answer" type="submit">정답제출2-1-9</button>
+        </td>   
+    </tr>
+
+
+    <tr>
+    <td>2-1-10</td>
+    <td>용기의근원</td>
+    <td>
+        <input type="hidden" class="qid" value="10">
+        <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+        <button class="btn btn-outline-success treasureButton" value="Answer" type="submit">정답제출2-1-10</button>
+    </td>   
+    </tr>
+    
+        <tr>
+        <td>2-5-11</td>
+        <td>인간은 타인의 무엇을 욕망하는가? </td>
+        <td>
+            <input type="hidden" class="qid" value="11">
+            <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+            <button class="btn btn-outline-danger treasureButton" value="Answer" type="submit">정답제출2-5-11</button>
+        </td>   
+        </tr>
+
+        <tr>
+            <td>2-5-12</td>
+            <td>나의 수준까지 끌어내리려는 의도 </td>
+            <td>
+                <input type="hidden" class="qid" value="12">
+                <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                <button class="btn btn-outline-danger treasureButton" value="Answer" type="submit">정답제출2-5-12</button>
+            </td>   
+            </tr>
+            <tr>
+            <td>2-5-13</td>
+            <td>저항하지 못 하는 무력함 </td>
+            <td>
+                <input type="hidden" class="qid" value="13">
+                <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                <button class="btn btn-outline-danger treasureButton" value="Answer" type="submit">정답제출2-5-13</button>
+            </td>   
+            </tr>
+
+            <tr>
+            <td>2-5-14</td>
+            <td>겁 많은 비열함 </td>
+            <td>
+                <input type="hidden" class="qid" value="14">
+                <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                <button class="btn btn-outline-danger treasureButton" value="Answer" type="submit">정답제출2-5-14</button>
+            </td>   
+            </tr>
+            <tr>
+            <td>2-5-15</td>
+            <td>넘을 수 없는 상대에 대한 공포 </td>
+            <td>
+                <input type="hidden" class="qid" value="15">
+                <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                <button class="btn btn-outline-danger treasureButton" value="Answer" type="submit">정답제출2-5-15</button>
+            </td>   
+            </tr>
+            <tr>
+            <td>2-5-16</td>
+            <td>이것은 나의 작은 인생이다</td>
+            <td>
+                <input type="hidden" class="qid" value="16">
+                <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                <button class="btn btn-outline-danger treasureButton" value="Answer" type="submit">정답제출2-5-16</button>
+            </td>   
+            </tr>
+            <tr>
+            <td>2-5-17</td>
+            <td>서성거리며 어쩔 수 없이 기다리는 것 </td>
+            <td>
+                <input type="hidden" class="qid" value="17">
+                <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                <button class="btn btn-outline-danger treasureButton" value="Answer" type="submit">정답제출2-5-17</button>
+            </td>   
+            </tr>
+            <tr>
+            <td>2-5-18</td>
+            <td>예수를 죽인 진범?</td>
+            <td>
+                <input type="hidden" class="qid" value="18">
+                <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                <button class="btn btn-outline-danger treasureButton" value="Answer" type="submit">정답제출2-5-18</button>
+            </td>   
+            </tr>
+            <tr>
+            <td>2-5-19</td>
+            <td>빵과 서커스만 있으면 다룰 수 있는것</td>
+            <td>
+                <input type="hidden" class="qid" value="19">
+                <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                <button class="btn btn-outline-danger treasureButton" value="Answer" type="submit">정답제출2-5-19</button>
+            </td>   
+            </tr>
+            <tr>
+            <td>2-5-20</td>
+            <td>사람들을 열광시킬 수 있는 가장 강력한 감정 두가지 </td>
+            <td>
+                <input type="hidden" class="qid" value="20">
+                <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                <button class="btn btn-outline-danger treasureButton" value="Answer" type="submit">정답제출2-5-20</button>
+            </td>   
+            </tr>
+
+            <tr>
+                <td>2-10-21</td>
+                <td>집단의  품위없는 망령 </td>
+                <td>
+                    <input type="hidden" class="qid" value="21">
+                    <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                    <button class="btn btn-outline-primary treasureButton" value="Answer" type="submit">정답제출2-10-21</button>
+                </td>   
+                </tr>
+           
+
+                <tr>
+                    <td>2-10-22</td>
+                    <td>지배계층의 광범위한 지배를 위한 위선적인 음모 </td>
+                    <td>
+                        <input type="hidden" class="qid" value="22">
+                        <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                        <button class="btn btn-outline-primary treasureButton" value="Answer" type="submit">정답제출2-10-22</button>
+                    </td>   
+                    </tr>
+
+                    <tr>
+                        <td>2-10-23</td>
+                        <td>약자는 이걸 쓰고 살아간다 </td>
+                        <td>
+                            <input type="hidden" class="qid" value="23">
+                            <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                            <button class="btn btn-outline-primary treasureButton" value="Answer" type="submit">정답제출2-10-23</button>
+                        </td>   
+                        </tr>
+                        
+                        <tr>
+                            <td>2-10-24</td>
+                            <td>명분없는 이것은 세련된 경멸이다</td>
+                            <td>
+                                <input type="hidden" class="qid" value="24">
+                                <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                                <button class="btn btn-outline-primary treasureButton" value="Answer" type="submit">정답제출2-10-24</button>
+                            </td>   
+                            </tr>
+                            <tr>
+                                <td>2-10-25</td>
+                                <td>상대방이 저항해도 내 의지를 관철시킬 수 있는 힘</td>
+                                <td>
+                                    <input type="hidden" class="qid" value="25">
+                                    <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                                    <button class="btn btn-outline-primary treasureButton" value="Answer" type="submit">정답제출2-10-25</button>
+                                </td>   
+                                </tr>
+                                <tr>
+                                    <td>2-10-26</td>
+                                    <td>주조된 자유</td>
+                                    <td>
+                                        <input type="hidden" class="qid" value="26">
+                                        <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                                        <button class="btn btn-outline-primary treasureButton" value="Answer" type="submit">정답제출2-10-26</button>
+                                    </td>   
+                                    </tr>
+                                    <tr>
+                                        <td>2-10-27</td>
+                                        <td>진정한 친구만 남게하는 것</td>
+                                        <td>
+                                            <input type="hidden" class="qid" value="27">
+                                            <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                                            <button class="btn btn-outline-primary treasureButton" value="Answer" type="submit">정답제출2-10-27</button>
+                                        </td>   
+                                        </tr>
+                                        <tr>
+                                            <td>2-10-28</td>
+                                            <td>힘없는 자들의 용기 </td>
+                                            <td>
+                                                <input type="hidden" class="qid" value="28">
+                                                <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                                                <button class="btn btn-outline-primary treasureButton" value="Answer" type="submit">정답제출2-10-28</button>
+                                            </td>   
+                                            </tr>
+                                            <tr>
+                                                <td>2-10-29</td>
+                                                <td>상대를 감당할 능력이 있을 때 제기하는 것</td>
+                                                <td>
+                                                    <input type="hidden" class="qid" value="29">
+                                                    <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                                                    <button class="btn btn-outline-primary treasureButton" value="Answer" type="submit">정답제출2-10-29</button>
+                                                </td>   
+                                                </tr>
+                                                <tr>
+                                                    <td>2-10-30</td>
+                                                    <td>변하지 않지만  계속 변할 수 있는것</td>
+                                                    <td>
+                                                        <input type="hidden" class="qid" value="30">
+                                                        <input type="text" class="Answer form-control" placeholder="정답입력" aria-label="CYA" aria-describedby="basic-addon2">
+                                                        <button class="btn btn-outline-primary treasureButton" value="Answer" type="submit">정답제출2-10-30</button>
+                                                    </td>   
+                                                    </tr>
+                                                
+
+
+          </table>
+         
+          
+          <div class="d-grid gap-2">
+            <button class="btn btn-outline-success" type="submit" onclick=" MemberLogin()">지갑연결</button>
+            <li class="list-group-item">나의 누적 포인트 : <span id="Tpoint"></span>CYA</li>
+            <li class="list-group-item">인출 가능 포인트 : <span id="Point"></span>CYA</li>
+          </div>
+
+        <br> <!-- or <hr> for a horizontal line -->
+       
+
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script type="text/javascript"></script>
+
+<script src="../src/quiz.js"></script>
+<script src="../src/topinfo.js"></script>
+
+</body>
+
+</html>
+
+
+
+    
+
+
+       
