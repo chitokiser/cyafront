@@ -17,6 +17,7 @@ let address= {
       vetbank: [
        
         "function myinfo(address user) public view returns (uint256,uint256,uint256,uint256,uint256,uint256,address,address)",
+        "function  price( ) public view returns(uint)",
         ],
   
         ad: [
@@ -57,6 +58,8 @@ let address= {
     let signer = userProvider.getSigner();
    
     let tresureContract = new ethers.Contract(address.tresure, abi.tresure, signer);
+    
+   
     async function displayCards(tresureContract, signer) {
         // 카드 정보 가져오기
         const mytresure = await tresureContract.getcollect(await signer.getAddress());

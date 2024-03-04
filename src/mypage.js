@@ -27,6 +27,7 @@ let contractAddress = {    //vet bank랑 똑같음 alliance만 제외
     "function buyvet(uint _num) public returns(bool) ",
     "function sellvet(uint _num) public returns(bool) ",
     "function levelup() public ",
+    "function  price( ) public view returns(uint)",
     "event getdepo(uint amount);"
     ],
   };
@@ -95,6 +96,8 @@ let contractAddress = {    //vet bank랑 똑같음 alliance만 제외
       await userProvider.send("eth_requestAccounts", []);
       let signer = userProvider.getSigner();
       let vetContract = new ethers.Contract(contractAddress.vetbankAddr, contractAbi.vetbank, signer);
+      let payvet = await vetContract.price();  //레버리지 했을 경우 vet소비량
+
       let myvet = await vetContract.g8(await signer.getAddress());
       let mypay = await vetContract.getpay(await signer.getAddress());
       let myvetvalue = await vetContract.getprice() * await myvet;
@@ -111,6 +114,9 @@ let contractAddress = {    //vet bank랑 똑같음 alliance만 제외
       let mento = (await my[6]);
       let agent = (await my[7]);
       let levelexp = parseInt(2**mylev*10000);
+      document.getElementById("Payvet").innerHTML= (point/payvet).toFixed(0);
+      var element = document.getElementById('Payvet'); // "Payvet" id를 가진 요소 선택
+       element.style.color = 'red'; // 텍스트 색상을 빨간색으로 설정 
       document.getElementById("Tpoint").innerHTML= (tpoint/1E18).toFixed(4); 
       document.getElementById("Point").innerHTML= (point/1E18).toFixed(4);   //찾을 돈 돈
       document.getElementById("Myexp").innerHTML= (myexp);

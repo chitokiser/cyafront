@@ -103,7 +103,7 @@ document.getElementById("bPrice2").innerHTML=(bnbPrice/1000).toFixed(3);
 
        const treasureContract = new ethers.Contract(Taddress.tresure, Tabi.tresure, provider);
        const tvl = await treasureContract.total();
-       document.getElementById("Total").innerHTML = (tvl / 1e18).toFixed(4); // treasure found
+       document.getElementById("Total").innerHTML = (tvl / 1e18).toFixed(2); // treasure found
   
         };
      
