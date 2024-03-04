@@ -46,7 +46,7 @@ tresureContract.on('reward', (amount) => {
     // 3초 후에 결과값을 지우는 코드
     setTimeout(() => {
         document.getElementById('eventQ1').innerText = '';
-    }, 5000);
+    }, 10000);
 });
 
 // 'wrong' 이벤트 핸들러
@@ -58,7 +58,7 @@ tresureContract.on('wrong', (amount) => {
     // 3초 후에 결과값을 지우는 코드
     setTimeout(() => {
         document.getElementById('eventQ2').innerText = '';
-    }, 5000);
+    }, 10000);
 });
 
 
