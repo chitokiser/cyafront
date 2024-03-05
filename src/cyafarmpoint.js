@@ -55,7 +55,7 @@
               
         console.log('구매한농장ID:', winnum);
  
-        document.getElementById('eventData').innerText = `구매한농장ID: ${winnum}`;
+        document.getElementById('eventF1').innerText = `구매한농장ID: ${winnum}`;
     });
  
         };
