@@ -104,7 +104,7 @@ let contractAddress = {    //vet bank랑 똑같음 alliance만 제외
       document.getElementById("Myvet").innerHTML= parseInt(myvet); 
       document.getElementById("Mytvl").innerHTML= parseFloat(myvetvalue/1e18).toFixed(4); 
       document.getElementById("Mypay").innerHTML= parseFloat(mypay/1e18).toFixed(6); 
-      console.log(mypay);
+      
       let my = await vetContract.myinfo(await signer.getAddress());
       let tpoint =  parseInt(await my[0]);
       let point =  parseInt(await my[1]);
@@ -114,11 +114,11 @@ let contractAddress = {    //vet bank랑 똑같음 alliance만 제외
       let mento = (await my[6]);
       let agent = (await my[7]);
       let levelexp = parseInt(2**mylev*10000);
-      document.getElementById("Payvet").innerHTML= (point/payvet/1e18).toFixed(0);
+      document.getElementById("Payvet").innerHTML= (point/payvet).toFixed(0);
       var element = document.getElementById('Payvet'); // "Payvet" id를 가진 요소 선택
        element.style.color = 'red'; // 텍스트 색상을 빨간색으로 설정 
-      document.getElementById("Tpoint").innerHTML= (tpoint/1E18).toFixed(4); 
-      document.getElementById("Point").innerHTML= (point/1E18).toFixed(4);   //찾을 돈 돈
+      document.getElementById("Tpoint").innerHTML= (tpoint/1e18).toFixed(2); 
+      document.getElementById("Point").innerHTML= (point/1e18).toFixed(2);   //찾을 돈
       document.getElementById("Myexp").innerHTML= (myexp);
       document.getElementById("Mylev").innerHTML= (mylev);
       document.getElementById("Mylev2").innerHTML= (mylev);

@@ -1,6 +1,6 @@
  // testnet
  let contractAddress = {
-    cyafarmAddr: "0xeFAf3eBa3Ca71C551710dBeE1222DA857B18ec50",
+    cyafarmAddr: "0x967F06939B06dB726681e29f7986CaDaCED60b91",
   };
    let contractAbi = {
   
@@ -204,12 +204,21 @@
     await userProvider.send("eth_requestAccounts", []);
     let signer = userProvider.getSigner();
     let cyafarmContract = new ethers.Contract(contractAddress.cyafarmAddr, contractAbi.cyafarm, signer);
-    try {
-      await cyafarmContract.charge(document.getElementById('Seed2').value);
-    } catch(e) {
-      alert(e.message.replace('execution reverted: ',''));
+
+
+   let seedAmount = parseInt(document.getElementById('Seed2').value);
+    if (seedAmount < 1000) {
+        alert("VET1000개 이상 입력해야 합니다");
+        return;
     }
-  };
+    
+    try {
+        await cyafarmContract.charge(seedAmount);
+    } catch(e) {
+        alert(e.message.replace('execution reverted: ',''));
+    }
+};
+
 
 
 

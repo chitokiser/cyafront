@@ -32,10 +32,7 @@ let address= {
   async function updateData() {
     try {
         const provider = new ethers.providers.JsonRpcProvider('https://opbnb-mainnet-rpc.bnbchain.org');
-        
-        // Treasure contract
-     
-        
+      
         // Advertising contract
         const adContract = new ethers.Contract(address.ad, abi.ad, provider);
         const didno = await adContract.did(); // Total number of donors
@@ -46,27 +43,37 @@ let address= {
         document.getElementById("Totaldo").innerHTML = (totaldo / 1e18); // Total donation amount
         document.getElementById("Totaldo2").innerHTML = (totaldo / 1e18); // Withdrawable amount
         
-        // Clear existing donor list
         const donorListElement = document.getElementById("donor-list");
         donorListElement.innerHTML = "";
-        
+    
         // Fetch donor information dynamically
+        let donorInfoArray = [];
         for (let i = 1; i <= didno; i++) {
             const coninfo = await adContract.myinfo(i); // Donation information
             const donorName = coninfo[0];
             const donationAmount = coninfo[1] / 1e18;
-
-            // Create table row
+    
+            // Store donor information in an object
+            donorInfoArray.push({
+                donorIndex: i,
+                name: donorName,
+                amount: donationAmount
+            });
+        }
+    
+        // Sort donor information array by donation amount in descending order
+        donorInfoArray.sort((a, b) => b.amount - a.amount);
+    
+        // Create table rows and append them to donor list
+        donorInfoArray.forEach((donorInfo, index) => {
             const newRow = document.createElement("tr");
             newRow.innerHTML = `
-                <th scope="row">${i}</th>
-                <td>${donorName}</td>
-                <td>${donationAmount}</td>
+                <th scope="row">${index + 1}</th>
+                <td>${donorInfo.name}</td>
+                <td>${donorInfo.amount}</td>
             `;
-
-            // Append row to donor list
             donorListElement.appendChild(newRow);
-        }
+        });
     } catch (error) {
         console.error('Error:', error);
     }
@@ -122,37 +129,45 @@ updateData();
 
 
   let Nameregi = async () => {   //이름변경하기
+    // Get the user input for the name
+    let userName = document.getElementById('Contributor').value;
 
-        let userProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
+    // Check if the length of the name exceeds 5 characters
+    if (userName.length > 5) {
+        alert("이름은 5자를 초과할 수 없습니다.");
+        return; // Exit the function if the name exceeds 5 characters
+    }
 
-        await window.ethereum.request({
-            method: "wallet_addEthereumChain",
-            params: [{
-                chainId: "0xCC",
-                rpcUrls: ["https://opbnb-mainnet-rpc.bnbchain.org"],
-                chainName: "opBNB",
-                nativeCurrency: {
-                    name: "BNB",
-                    symbol: "BNB",
-                    decimals: 18
-                },
-                blockExplorerUrls: ["https://opbnbscan.com"]
-            }]
-        });
+    let userProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
 
-        await userProvider.send("eth_requestAccounts", []);
+    await window.ethereum.request({
+        method: "wallet_addEthereumChain",
+        params: [{
+            chainId: "0xCC",
+            rpcUrls: ["https://opbnb-mainnet-rpc.bnbchain.org"],
+            chainName: "opBNB",
+            nativeCurrency: {
+                name: "BNB",
+                symbol: "BNB",
+                decimals: 18
+            },
+            blockExplorerUrls: ["https://opbnbscan.com"]
+        }]
+    });
 
-        // Get the signer (account) from the provider
-        let signer = userProvider.getSigner();
+    await userProvider.send("eth_requestAccounts", []);
 
-        // Instantiate the treasure contract with the signer
-        const adContract = new ethers.Contract(address.ad, abi.ad, signer);
+    // Get the signer (account) from the provider
+    let signer = userProvider.getSigner();
 
-        try {
-            await  adContract.nameregi(document.getElementById('Contributor').value); 
-          } catch(e) {
-            alert(e.data.message.replace('execution reverted: ',''))
-          }
-        
-      };
+    // Instantiate the treasure contract with the signer
+    const adContract = new ethers.Contract(address.ad, abi.ad, signer);
+
+    try {
+        await  adContract.nameregi(userName); 
+    } catch(e) {
+        alert(e.data.message.replace('execution reverted: ',''))
+    }
+};
+
     
