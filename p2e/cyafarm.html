@@ -93,67 +93,79 @@
   <!--여기까지 대쉬보드 -->
 
     <body>
-        <div class="d-grid gap-2">
-            <button class="btn btn-dark" type="button">보물 리스트</button>
-          </div>
-        <div class="bg-light p-5 rounded">
-          <p>원하는 곳으로 보물을 찾아 떠나보세요</p>
-          <p>보물을 찾으면 보물과 함께 포인트를 드립니다</p>
-          <p>찾은 보물은 내가 찾은 보물에서 볼 수 있습니다</p>
-        </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-dark" type="button">시아팜</button>
+      </div>
+   
+
+       
+          <li class="list-group-item">농장가격  :<span id="Fprice">-</span>FT</li>
+          <li class="list-group-item">농장개수  :<span id="farmtotal">-</span>개</li>
+        <li class="list-group-item">이번생성순번 : <span id="farmnum">-</span>번째</li>
+        <li class="list-group-item">계약잔고 : <span id="fcyatvl">-</span>VET</li>
+        <li class="list-group-item">누적세금 : <span id="Ttax">-</span>FT</li>
   
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">내가 찾은 보물들 </h5>
-              <p class="card-text">1~30번까지 수집하면 브론즈보상</p>
-              <p class="card-text">1~50번까지 수집하면 실버보상</p>
-              <p class="card-text">1~75번까지 수집하면 골드보상</p>
-              <a href="../tresure/mytresure.html" class="btn btn-outline-success">나의보물보관함</a>
-            </div>
+
+          <div class="d-grid gap-2">
+            <button class="btn btn-dark" type="button">포인트 변경 필수 이익실현<span id="Fprice3">FT</span> </button>
           </div>
-        </div>
-
-
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">논산 딸기 축제장 일대</h5>
-          <p class="card-text">VET 토큰을 열쇠로 하여 보물박스를 열 수 있습니다</p>
-          <p class="card-text">메타마스크 카카오채널 친구추가하면 제출 Air Drop</p>
-          <p class="card-text">반짝 구매 영수증을 카카오채널에 제출 VET 추가 Air Drop</p>
-          <a href="../tresure/nonsan.html" class="btn btn-outline-success">논산딸기축제GO</a>
-        </div>
-      </div>
-    </div>
       
-
-
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">대전 은행동 일대</h5>
-            <p class="card-text">전설의 보물을 찾아라</p>
-            <p class="card-text">메타마스크 설치 후 카카오채널 친구추가하면  Air Drop</p>
-            <a href="../tresure/daejeon.html" class="btn btn-outline-success">대전은행동GO</a>
+          <div class="input-group mb-3">
+            <input type="text" id="Seed2" class="form-control" placeholder="충전할 VET을 입력하세요.VET시세만큼 FT가 충전됩니다"
+              aria-label="CYA" aria-describedby="basic-addon2">
+            <span class="input-group-text" id="basic-addon2" style="cursor: pointer;" onclick="Charge()">농장구매용 팜포인트(FT)충전</span>
+         
           </div>
+      
+      
+          <button class="btn btn-outline-primary" type="submit" onclick="MemberLogin()">
+            <i class="fas fa-eye"></i> 나의 현황 보기
+        </button>
+                    
+        <li class="list-group-item">나의 FT: <span id="farmdepo">-</span>FT</li>
+        <li class="list-group-item">나의 누적 수익 실현 금액: <span id="farmgain">-</span>FT</li>
+        <li class="list-group-item">포인트 변경 필수 남은 이익실현점수: <span id="farmjack">-</span>FT</li>
+        <li class="list-group-item">농장 구매하기를 누르면 1회당 -<span id="Fprice2">-</span>FT</li>
+        <div>
+            <button class="btn btn-outline-danger" type="submit" onclick="Buyfarm()">
+                <i class="fas fa-shopping-cart"></i> 농장 구매하기
+            </button>
+            <li class="list-group-item"><span id="eventData"></span></li>
+            <button class="btn btn-outline-success" type="submit" onclick="fwithdraw()">
+                <i class="fas fa-exchange-alt"></i> FT를 포인트로 변경하기
+            </button>
+            <button class="btn btn-outline-success" type="submit" onclick="Myfarm()">
+                <i class="fas fa-tractor"></i> 내 농장 보기
+            </button>
         </div>
-      </div>
+        
+          
     
+              <div class="col-sm-12" id="farmCards">
+                <!--리스트가 여기에 출력. -->
+            </div>
+          
+        </div>
+ 
+
+        <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+          <p>We do not collect personal information</p>
+        </div>
        
-       
-          <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-            <p><a class="nav-link" href="https://twitter.com/choecheolung8">CYADAO소식</a></p>
-            <p>We do not collect personal information</p>
-            <p><a class="nav-link" href="https://t.me/cyadaokorea">CYA DAO 텔레그램 오픈채팅방</a></p>
-       <!-- End footer -->
-</main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script type="text/javascript"></script>
-<script src="../src/topinfo.js"></script>
-</body>
+     <!-- End footer -->
+
+              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous"></script>
+              <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+              <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+              <script type="text/javascript"></script>
+              <script src="web3.min.js"></script>
+              <script src="../src/topinfo.js"></script>
+              <script src="../src/cyafarmpoint.js"></script>
+             
+              </script>
+
+    </body>
 
 </html>
