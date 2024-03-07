@@ -103,7 +103,7 @@
               <img src="/images/add1.png" class="d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
                 <h5>CYA는 opBNB에 가치를 저장하고  USD $1를 항상 수렴하는 스테이블 토큰입니다.</h5>
-    
+              
               </div>
             </div>
             <div class="carousel-item">
@@ -132,85 +132,97 @@
         <!-- carousel -->
 
         <div class="container-box">
-          <h5>CYA 보물찾기에 오신걸 환영합니다 <a href="file/Cyadaowhitepaper1-1.pdf" download="Cyadaowhitepaper1-1.pdf"></a></h5>
-          <p>모바일 접속 시에는  메타마스크에서 https://cyadao.netlify.app/ 입력 하시고 즐겨찾기에 추가하세요</p>
+          <h5>CYA 보물찾기에 오신걸 환영합니다 </h5>
+          <p>아래 서비스 이용하기 참고하세요</p>
           <p>보물을 찾으면 포인트를 얻을 수 있으며 포인트는 CYA로 교환하여 BNB와 교환됩니다</p>
           <p>포인트는 가맹점,보물찾기,게임등을 통해 무한으로 얻을 수 있습니다</p>
           <p>BNB시세와 관계없이 1CYA는 1USD를 수렴합니다</p>
-          <p>보물박스를 열기위해서는 VET토큰이 필요합니다.메타마스크 설치 후 아래 카카오톡 친구추가 하면 BNB&VET 토큰 무료지급 </p>
+       
         </div>
-            <img src="..\images\kakaolink.png" alt="" width="100%" height="auto">
+       
     
         <div class="pretty-box">
           <ul class="list-group">
-            <li class="list-group-item">Treasure found: <span id="Total"></span>CYA</li>
+            <li class="list-group-item">찾은 보물: <span id="Total"></span>CYA</li>
           </ul>
         </div>
       </div>
-
-        <button class="btn btn-outline-success"  role="button"  onclick="addTokenCya()">CYA Token 자동추가 </button>
-        <button class="btn btn-outline-success"  role="button"  onclick="Addvet()">VET Token 자동추가 </button>
-        <P><a class="link" href="https://opbnbscan.com"></a></P>
-   
         
-      
+      <button class="btn btn-outline-success"  role="button"  onclick="addTokenCya()">CYA Token 자동추가 </button>
+      <button class="btn btn-outline-success"  role="button"  onclick="Addvet()">VET Token 자동추가 </button>
+     
         <div class="d-grid gap-2">
-          <button class="btn btn-dark" type="button">서비스 바로 가기</button>
+          <button  id="toggleButton" class="btn btn-dark" type="button">서비스 이용 안내(클릭)</button>
+        </div>
+       
+        <div id="content" style="display: none;">
+        <div class="d-grid gap-2">
+          <div class="card">
+            <div class="card-body">
+              <!-- YouTube 동영상을 포함할 iframe -->
+              <iframe width="100%" height="315" src="https://www.youtube.com/embed/EmHZSI2Gjkc" frameborder="0" allowfullscreen></iframe>
+              <!-- 카드의 나머지 내용 -->
+              <h5 class="card-title">1.메타마스크 설치</h5>
+              <p class="card-text">메타마스크 설치 후 카카오 chito54친구추가 하시면 BNB&VET Airdrop</p>
+              <a href="https://play.google.com/store/search?q=%EB%A9%94%ED%83%80%EB%A7%88%EC%8A%A4%ED%81%AC&c=apps&hl=ko-KR" class="btn btn-primary">메타마스크다운로드</a>
+            </div>
+          </div>
         </div>
 
-
-        <div class="card-container" style="display: flex;">
-          <div class="card" style="width: 18rem; margin-right: 10px;">
+          
+        <div class="d-grid gap-2">
+          <div class="card">
             <div class="card-body">
-              <h5 class="card-title">회원등록</h5>
-              <p class="card-text">어떠한 개인정보 제공할 필요없이 메타마스크 설치 후 버튼 두번이면 회원등록 끝</p>
-              <a href="../mypage.html" class="btn btn-success">회원등록/지갑연결</a>
+              
+              <h5 class="card-title">2.opBNB&VET 추가하기</h5>
+              <p class="card-text">opBNB는 가스비 용도로 쓰여지고 VET은 보물박스를 열때 필요합니다</p>
+              <p class="card-text">아래 버튼을 눌러 코인과 토큰을 메타마스크 지갑에 추가하세요</p>
+              <button class="btn btn-outline-success"  role="button"  onclick="addTokenCya()">CYA Token 자동추가 </button>
+              <button class="btn btn-outline-success"  role="button"  onclick="Addvet()">VET Token 자동추가 </button>
             </div>
           </div>
-        </div> 
+        </div>
 
-
-        <div class="card-container" style="display: flex;">
-          <div class="card" style="width: 18rem; margin-right: 10px;">
+        <div class="d-grid gap-2">
+          <div class="card">
             <div class="card-body">
-              <h5 class="card-title">코인&토큰 교환소</h5>
-              <p class="card-text">opBNB,CYA,VET 각종 코인&토큰 교환소</p>
-              <a href="../cyadex.html" class="btn btn-warning">교환소</a>
+              <!-- YouTube 동영상을 포함할 iframe -->
+              <iframe width="100%" height="315" src="https://www.youtube.com/embed/7sn-dn-9UaQ" frameborder="0" allowfullscreen></iframe>
+              <!-- 카드의 나머지 내용 -->
+              <h5 class="card-title">3.메타마스크에서 접속하기</h5>
+              <p class="card-text">메타마스크에서 cyadao.netliyfy.app 접속 하세요</p>
             </div>
           </div>
-        </div> 
+        </div>
 
+        <div class="d-grid gap-2">
+          <div class="card">
+            <div class="card-body">
+              <!-- YouTube 동영상을 포함할 iframe  https://www.youtube.com/shorts/j8RlrB0iH6A?feature=share-->
+              <iframe width="100%" height="315" src="https://www.youtube.com/embed/j8RlrB0iH6A" frameborder="0" allowfullscreen></iframe>
+              <!-- 카드의 나머지 내용 -->
+              <h5 class="card-title">4.회원등록 하기</h5>
+              <p class="card-text">회원등록/지갑연결 클릭>추천인 어카운트 자동입력 클릭>회원등록하기 클릭</p>
+              <p class="card-text">지갑연결 후 나의 레벨확인 1이면 가입완료</p>
+              <a href="https://cyadao.netlify.app/mypage" class="btn btn-primary">회원등록하기(메타마스크에서 클릭)</a>
+            </div>
+          </div>
+        </div>
+        
 
-                    <div class="card-container" style="display: flex;">
-                      <div class="card" style="width: 18rem; margin-right: 10px;">
-                        <div class="card-body">
-                          <h5 class="card-title">포인트 확보</h5>
-                          <p class="card-text">가맹점을 CYA로 이용하시면 포인트를 더 얻을 수 있습니다</p>
-                          <a href="../alliance/vet.html" class="btn btn-secondary">가맹점가기</a>
-                        </div>
-                      </div>
-                    </div> 
-                      <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                          <h5 class="card-title">보물찾기</h5>
-                          <p class="card-text">단서를 보고 보물을 찾으세요</p>
-                          <a href="../tresure/tresurelist.html" class="btn btn-primary">보물찾기</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>  
-
-                  <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">퀴즈</h5>
-                      <p class="card-text">보물을 찾으면 문제를 받을 수 있습니다</p>
-                      <p class="card-text">문제의 답을 맞추면 아이템을 받습니다</p>
-                      <a href="../quiz/quiz.html" class="btn btn-primary">퀴즈풀기</a>
-                    </div>
-                  </div>
-                </div>
-              </div>  
-      
+        <div class="d-grid gap-2">
+          <div class="card">
+            <div class="card-body">
+             
+              <iframe width="100%" height="315" src="https://www.youtube.com/embed/PPT98jWV44k" frameborder="0" allowfullscreen></iframe>
+          
+              <h5 class="card-title">5.보물찾기</h5>
+              <p class="card-text">메뉴>보물찾기>보물선택>보물위치 유추>스캔</p>
+              <p class="card-text">보물+포인트 획득</p>
+            </div>
+          </div>
+        </div>
+      </div>
                   <br> <!-- or <hr> for a horizontal line -->      
           
                   <div class="d-grid gap-2">
@@ -262,6 +274,7 @@
 <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4"></script>
 
 <script src="../src/index.js"></script>
 <script src="../src/topinfo.js"></script>

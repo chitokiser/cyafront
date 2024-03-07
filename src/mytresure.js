@@ -62,13 +62,16 @@ let address= {
    
     async function displayCards(tresureContract, signer) {
         // 카드 정보 가져오기
-        const mytresure = await tresureContract.getcollect(await signer.getAddress());
-
+        const mytresure = (await tresureContract.getcollect(await signer.getAddress())).slice(); // 새 배열로 복사
+    
+        // 카드를 번호 순서대로 소팅
+        mytresure.sort((a, b) => a - b);
+    
         // 카드를 표시할 HTML 문자열 생성
         let html = '';
         mytresure.forEach((card, index) => {
             const imagePath = `../images/mytresure/card${card}.png`; // 이미지 파일의 경로를 동적으로 생성
-
+    
             // 카드 HTML 코드 추가
             html += `
                 <div id="Mycard${card}" class="card">
@@ -77,10 +80,10 @@ let address= {
                 </div>
             `;
         });
-
+    
         // HTML에 카드 정보 추가
         document.getElementById('myCardsContainer').innerHTML = html;
-
+    
         // 각 카드에 이벤트 리스너 추가 (예시로 추가한 코드)
         mytresure.forEach((card, index) => {
             document.getElementById(`Mycard${card}`).addEventListener('click', () => {
@@ -89,6 +92,8 @@ let address= {
             });
         });
     }
+    
+    
     
     // displayCards 함수 호출
     await displayCards(tresureContract, signer);

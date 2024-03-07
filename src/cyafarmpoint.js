@@ -124,33 +124,6 @@
     document.getElementById("farmjack").innerHTML = (gain/1e18).toFixed(2); //인출 가능까지 남은 목표 이익금
 
 
-    async function displayCards(cyafarmContract, signer) {
-        // 카드 정보 가져오기
-        const mytresure = await cyafarmContract.getcollect(await signer.getAddress());
-
-        // 카드를 표시할 HTML 문자열 생성
-        let html = '';
-        mytresure.forEach((card, index) => {
-            const imagePath = `../images/farm/nft-id-${card}.jpg`; 
-
-            // 카드 HTML 코드 추가
-            html += `
-                <div id="Mycard${card}" class="card">
-                    <img src="${imagePath}" alt="Card ${card}">
-                    <div>농장번호 : ${card}</div>
-                </div>
-            `;
-        });
-
-        // HTML에 카드 정보 추가
-        document.getElementById('myCardsContainer').innerHTML = html;
-
-     
-    }
-    
-    // displayCards 함수 호출
-    await displayCards(cyafarmContract, signer);
-  
     
   };
   
@@ -224,87 +197,97 @@
 
   let Myfarm = async () => {
     let userProvider = new ethers.providers.Web3Provider(window.ethereum, "any");
-    await window.ethereum.request({
-        method: "wallet_addEthereumChain",
-        params: [{
-            chainId: "0xCC",
-            rpcUrls: ["https://opbnb-mainnet-rpc.bnbchain.org"],
-            chainName: "opBNB",
-            nativeCurrency: {
-                name: "BNB",
-                symbol: "BNB",
-                decimals: 18
-            },
-            blockExplorerUrls: ["https://opbnbscan.com"]
-        }]
-    });
-    await userProvider.send("eth_requestAccounts", []);
-    let signer = userProvider.getSigner();
-    const provider = new ethers.providers.JsonRpcProvider('https://opbnb-mainnet-rpc.bnbchain.org');
-    let cyafarmContract = new ethers.Contract(contractAddress.cyafarmAddr, contractAbi.cyafarm, provider)
+await window.ethereum.request({
+    method: "wallet_addEthereumChain",
+    params: [{
+        chainId: "0xCC",
+        rpcUrls: ["https://opbnb-mainnet-rpc.bnbchain.org"],
+        chainName: "opBNB",
+        nativeCurrency: {
+            name: "BNB",
+            symbol: "BNB",
+            decimals: 18
+        },
+        blockExplorerUrls: ["https://opbnbscan.com"]
+    }]
+});
+await userProvider.send("eth_requestAccounts", []);
+let signer = userProvider.getSigner();
+const provider = new ethers.providers.JsonRpcProvider('https://opbnb-mainnet-rpc.bnbchain.org');
+let cyafarmContract = new ethers.Contract(contractAddress.cyafarmAddr, contractAbi.cyafarm, provider)
 
-    const myfarm = await cyafarmContract.getcollect(await signer.getAddress());
-    const displayedIds = [];
+const myfarm = await cyafarmContract.getcollect(await signer.getAddress());
 
-    myfarm.forEach(async (nftId) => {
-        if (!displayedIds.includes(nftId)) {
-            const depoInfo = await cyafarmContract.allportinfo(nftId);
-            const periodInfo = await cyafarmContract.getperiod(nftId);
-            const valueInfo = await cyafarmContract.getvalue(nftId);
-            const ownerInfo = depoInfo.owner;
+// 중복된 농장 ID를 추적하기 위한 Set 생성
+const displayedIds = new Set();
 
-            const card = document.createElement("div");
-            card.className = "card";
+// 번호 순서대로 정렬된 농장 ID 배열 생성
+const sortedFarmIds = myfarm.slice().sort((a, b) => a - b);
 
-            const img = document.createElement("img");
-            img.src = `../images/farm/nft-id-${nftId}.jpg`;
-            img.className = "card-img-top";
-            img.alt = "...";
-            img.loading = "lazy";
+for (const nftId of sortedFarmIds) {
+    // 중복된 농장 ID인지 확인
+    if (!displayedIds.has(nftId)) {
+        const depoInfo = await cyafarmContract.allportinfo(nftId);
+        const periodInfo = await cyafarmContract.getperiod(nftId);
+        const valueInfo = await cyafarmContract.getvalue(nftId);
+        const ownerInfo = depoInfo.owner;
 
-            const cardBody = document.createElement("div");
-            cardBody.className = "card-body";
+        const card = document.createElement("div");
+        card.className = "card";
 
-            const cardTitle = document.createElement("h6");
-            cardTitle.className = "card-title";
-            cardTitle.textContent = `농장번호 ${nftId}`;
+        const img = document.createElement("img");
+        img.src = `../images/farm/nft-id-${nftId}.jpg`;
+        img.className = "card-img-top";
+        img.alt = "...";
+        img.loading = "lazy";
 
-            const depoText = document.createElement("p");
-            depoText.className = "card-text";
-            depoText.textContent = `최초농장가치 : ${depoInfo.depo/1E18} FT`;
+        const cardBody = document.createElement("div");
+        cardBody.className = "card-body";
 
-            const deponText = document.createElement("p");
-            deponText.className = "card-text";
-            deponText.textContent = `농장생성순서 : ${depoInfo.depon} 번째`;
+        const cardTitle = document.createElement("h6");
+        cardTitle.className = "card-title";
+        cardTitle.textContent = `농장번호 ${nftId}`;
 
-            const periodText = document.createElement("p");
-            periodText.className = "card-text";
-            periodText.textContent = `농장운영기간 : ${periodInfo} 초`;
+        const depoText = document.createElement("p");
+        depoText.className = "card-text";
+        depoText.textContent = `최초농장가치 : ${depoInfo.depo/1E18} FT`;
 
-            const valueText = document.createElement("p");
-            valueText.className = "card-text";
-            valueText.textContent = `농장현재가치 : ${valueInfo/1E18} FT`;
+        const deponText = document.createElement("p");
+        deponText.className = "card-text";
+        deponText.textContent = `농장생성순서 : ${depoInfo.depon} 번째`;
 
-            // 소유자 정보를 추가
-            const ownerText = document.createElement("p");
-            ownerText.className = "card-text";
-            ownerText.textContent = `농장소유자 : ${ownerInfo}`;
-            cardBody.appendChild(cardTitle);
-            cardBody.appendChild(depoText);
-            cardBody.appendChild(deponText);
-            cardBody.appendChild(periodText);
-            cardBody.appendChild(valueText);
-            // 카드 하단에 소유자 정보를 추가
-            cardBody.appendChild(ownerText);
-            card.appendChild(img);
-            card.appendChild(cardBody);
+        const periodText = document.createElement("p");
+        periodText.className = "card-text";
+        periodText.textContent = `농장운영기간 : ${periodInfo} 초`;
 
-            // 카드를 farmCards div에 추가
-            const farmCards = document.getElementById("farmCards");
-            farmCards.appendChild(card);
-            displayedIds.push(nftId); // 이미 표시된 농장 카드의 ID를 저장
-        }
-    });
+        const valueText = document.createElement("p");
+        valueText.className = "card-text";
+        valueText.textContent = `농장현재가치 : ${valueInfo/1E18} FT`;
+
+        // 소유자 정보를 추가
+        const ownerText = document.createElement("p");
+        ownerText.className = "card-text";
+        ownerText.textContent = `농장소유자 : ${ownerInfo}`;
+        cardBody.appendChild(cardTitle);
+        cardBody.appendChild(depoText);
+        cardBody.appendChild(deponText);
+        cardBody.appendChild(periodText);
+        cardBody.appendChild(valueText);
+        // 카드 하단에 소유자 정보를 추가
+        cardBody.appendChild(ownerText);
+        card.appendChild(img);
+        card.appendChild(cardBody);
+
+        // 카드를 farmCards div에 추가
+        const farmCards = document.getElementById("farmCards");
+        farmCards.appendChild(card);
+        
+        // 중복을 방지하기 위해 표시된 농장 ID를 Set에 추가
+        displayedIds.add(nftId);
+    }
+}
+
+    
 }
 
   
