@@ -291,4 +291,15 @@ tbody tr:nth-child(even) {
 
 
 
+.image-container {
+    max-width: 50%; /* 이미지가 너무 크게 보이지 않도록 최대 크기 설정 */
+}
+/* 이미지를 100% 너비로 표시 */
+.image-container img {
+    width: 50%;
+    height: auto;
+}
+
+
+
   
