@@ -43,10 +43,10 @@ tresureContract.on('reward', (amount) => {
     console.log('찾은보물:', amount);
     document.getElementById('eventQ1').innerText = `***정답입니다+ ${amount/1e18} P`;
 
-    // 3초 후에 결과값을 지우는 코드
+    
     setTimeout(() => {
         document.getElementById('eventQ1').innerText = '';
-    }, 10000);
+    }, 30000);
 });
 
 // 'wrong' 이벤트 핸들러
@@ -58,7 +58,7 @@ tresureContract.on('wrong', (amount) => {
     // 3초 후에 결과값을 지우는 코드
     setTimeout(() => {
         document.getElementById('eventQ2').innerText = '';
-    }, 10000);
+    }, 30000);
 });
 
 
