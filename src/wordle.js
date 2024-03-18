@@ -62,18 +62,18 @@ let address= {
   
   document.addEventListener('DOMContentLoaded', function () {
     var answerIdMap = {
-        '1': 'winer', 
-        '2': 'click', 
-        '3': 'input', 
-        '4': 'carrot', 
-        '5': 'melon', 
-        '6': 'onion', 
-        '7': 'tiger', 
-        '8': 'chair', 
-        '9': 'mouse', 
-        '10': 'house', 
-        '11': 'cloud', 
-        '12': 'smile', 
+        '1': 'WINER', 
+        '2': 'CLICK', 
+        '3': 'INPUT', 
+        '4': 'MELON', 
+        '5': 'ONION', 
+        '6': 'TIGER', 
+        '7': 'CHAIR', 
+        '8': 'MOUSE', 
+        '9': 'HOUSE', 
+        '10': 'CLOUD', 
+        '11': 'SMILE', 
+        '12': 'HAPPY'
      
     };
 
@@ -111,11 +111,11 @@ let address= {
         }
 
         var template = `<div style="margin-top: 10px;">
-        <input class="input" maxlength="1">
-        <input class="input" maxlength="1">
-        <input class="input" maxlength="1">
-        <input class="input" maxlength="1">
-        <input class="input" maxlength="1">
+        <input class="input" maxlength="1" pattern=".{1}">
+        <input class="input" maxlength="1" pattern=".{1}">
+        <input class="input" maxlength="1" pattern=".{1}">
+        <input class="input" maxlength="1" pattern=".{1}">
+        <input class="input" maxlength="1" pattern=".{1}">
         </div>`;
         document.querySelector('body').insertAdjacentHTML('beforeend', template);
     });
