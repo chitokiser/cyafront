@@ -1,25 +1,4 @@
-.game-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .game-box {
-    width: 300px; /* Adjust the width as needed */
-    height: 100px; /* Adjust the height as needed */
-    border: 2px solid black; /* Border for the game box */
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom: 20px; /* Margin to separate the box and the button */
-  }
-  
-  .game-input {
-    width: 40px;
-    height: 40px;
-    font-size: 30px;
-    text-align: center;
-  }
+
   
 
 
@@ -43,4 +22,19 @@
     box-shadow: 0px 0px 10px rgba(231, 76, 60, 0.5); /* Change box shadow on focus */
   }
 
+
+  .submit-button {
+    padding: 10px 80px; /* Add padding to the button */
+    font-size: 18px; /* Set font size */
+    background-color: #3498db; /* Set background color */
+    color: white; /* Set text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add border radius */
+    cursor: pointer; /* Add pointer cursor */
+    transition: background-color 0.3s ease; /* Add transition effect */
+  }
+  
+  .submit-button:hover {
+    background-color: #2980b9; /* Change background color on hover */
+  }
   
