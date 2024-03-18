@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
       
     <link rel="stylesheet" href="\css\main.css">
-  
+    <link rel="stylesheet" href="\css\wordle.css">
 
 </head>
 
@@ -47,10 +47,6 @@
                     <li class="nav-item">
                       <a class="nav-link" href="../mypage.html">회원등록/지갑연결</a>
                   </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="../cs.html">고객센타</a>
-                </li>
                  
                 </ul>
             </div>
@@ -95,66 +91,48 @@
     </div>
   </div>
   <!--여기까지 대쉬보드 -->
+ <div><strong>전설의 보물을 찾아보세요</strong>
+    <ul class="list-group"> 
+      <ul class="list-group">
+        <li class="list-group-item">먼저 문제id를 선택 하시고 생각나는데로 알파벳 소문자 5자를 빈칸에 한자씩 넣고 제출버튼 클릭 </li>
+        <li class="list-group-item">정답이면 녹색표시,정답에는 존재하지만 단어 순서가 맞지 않으면 노란색이 표시되고 정답에 없는 단어는 회색표시 됩니다 </li>
+        <li class="list-group-item">정답은 영어 소문자 5자 입니다</li>
+        <div class="pretty-box">
+            <li class="list-group-item">누적상금: <span id="Total"></span>CYA</li>     
+        </div>  
+        
+        <li class="list-group-item"><div><select id="idSelect">
+            <option value="1">문제ID 1</option>
+            <option value="2">문제ID 2</option>
+            <option value="3">문제ID 3</option>
+            <!-- Add more options as needed -->
+        </select> <button class="submit-button">제출</button></div> </li>
+</ul></div>
+  
 
-    <body>
-        <div class="d-grid gap-2">
-            <button class="btn btn-dark" type="button">P2E(Play to Earn)</button>
-          </div>
-        <div class="bg-light p-5 rounded">
-          <h5>플레이를 하여 포인트를 벌어 보세요</h5>
-     
-        </div>
+  <div id="eventT1"></div>
+  
+  <input class="input" maxlength="1">
+  <input class="input" maxlength="1">
+  <input class="input" maxlength="1">
+  <input class="input" maxlength="1">
+  <input class="input" maxlength="1">
+ 
   
 
 
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">퀴즈</h5>
-          <p class="card-text">보물찾기를 하여 힌트를 얻어 답을 적어보세요</p>
-          <p class="card-text">답을 제출하려면 VET이 소비 됩니다</p>
-          <a href="../quiz/quiz.html" class="btn btn-outline-success">퀴즈바로가기</a>
-        </div>
-      </div>
-    </div>
-      
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">워들</h5>
-          <p class="card-text">영단어 5자를 맞추면 포인트 보상</p>
-          <p class="card-text">정답을 맞추면 vet이 소비됩니다</p>
-          <a href="../p2e/wordle.html" class="btn btn-outline-success">워들바로가기</a>
-        </div>
-      </div>
-    </div>
+              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous"></script>
+              <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+              <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+              <script type="text/javascript"></script>
+              <script src="web3.min.js"></script>
+              <script src="../src/topinfo.js"></script>
+              <script src="../src/wordle.js"></script>
+             
+              </script>
 
-
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">시아팜</h5>
-            <p class="card-text">농장을 구매하여 운영하여 포인트를 벌어보세요</p>
-            <p class="card-text">VET으로 포인트를 충전하여 농장을 구매할 수 있습니다</p>
-            <a href="../p2e/cyafarm.html" class="btn btn-outline-success">시아팜바로가기</a>
-          </div>
-        </div>
-      </div>
-    
-       
-       
-          <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-            <p><a class="nav-link" href="https://twitter.com/choecheolung8">CYADAO소식</a></p>
-            <p>We do not collect personal information</p>
-            <p><a class="nav-link" href="https://t.me/cyadaokorea">CYA DAO 텔레그램 오픈채팅방</a></p>
-       <!-- End footer -->
-</main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script type="text/javascript"></script>
-
-</body>
+    </body>
 
 </html>

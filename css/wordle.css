@@ -1,0 +1,46 @@
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .game-box {
+    width: 300px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    border: 2px solid black; /* Border for the game box */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px; /* Margin to separate the box and the button */
+  }
+  
+  .game-input {
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    text-align: center;
+  }
+  
+
+
+  input {
+    width: 80px;
+    height: 80px;
+    font-size: 40px;
+    margin-bottom: 10px; /* Add spacing between inputs */
+    text-align: center; /* Center horizontally */
+    line-height: 80px; /* Center vertically */
+    border: 2px solid #3498db; /* Add border */
+    border-radius: 10px; /* Add border radius */
+    background-color: #ecf0f1; /* Add background color */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
+    transition: all 0.3s ease; /* Add transition effect */
+  }
+  
+  .input:focus {
+    outline: none; /* Remove default focus outline */
+    border-color: #e74c3c; /* Change border color on focus */
+    box-shadow: 0px 0px 10px rgba(231, 76, 60, 0.5); /* Change box shadow on focus */
+  }
+
+  

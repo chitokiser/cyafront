@@ -201,7 +201,11 @@
   
     
      {
-      font-size: 1em; /* Default font size */
+      position: fixed;
+      top: 50%; /* Place the element at the vertical center */
+      left: 50%; /* Place the element at the horizontal center */
+      transform: translate(-50%, -50%); /* Move the element back by half of its own width and height */
+      font-size: 1.5em; /* Default font size */
       color: rgb(250, 136, 6); /* Set font color to green */
       transform: perspective(1000px) rotateY(10deg);
   }
