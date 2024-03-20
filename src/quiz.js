@@ -41,12 +41,13 @@ let Qaddress= {
 tresureContract.on('reward', (amount) => {
     console.log('*** reward 이벤트 핸들러 호출됨 ***');
     console.log('찾은보물:', amount);
-    document.getElementById('eventQ1').innerText = `***정답입니다+ ${amount/1e18} P`;
+    let formattedAmount = (amount / 1e18).toFixed(6);
+    document.getElementById('eventQ1').innerText = `***정답입니다+ ${formattedAmount} P`;
 
     
     setTimeout(() => {
         document.getElementById('eventQ1').innerText = '';
-    }, 30000);
+    }, 5000);
 });
 
 // 'wrong' 이벤트 핸들러
@@ -58,7 +59,7 @@ tresureContract.on('wrong', (amount) => {
     // 3초 후에 결과값을 지우는 코드
     setTimeout(() => {
         document.getElementById('eventQ2').innerText = '';
-    }, 30000);
+    }, 5000);
 });
 
 
