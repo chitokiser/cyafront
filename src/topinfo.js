@@ -97,7 +97,7 @@ document.getElementById("bPrice2").innerHTML=(bnbPrice/1000).toFixed(3);
        let vetp = await vetbankContract.getprice();  //vet가격
        document.getElementById("Mem").innerHTML = parseInt(mems);
        document.getElementById("Vetp").innerHTML = parseFloat(vetp/1e18).toFixed(4);
-       document.getElementById("Tvl2").innerHTML = parseInt(tvl2);
+       document.getElementById("Tvl2").innerHTML = parseFloat(tvl2/1e6).toFixed(2);
 
 
 

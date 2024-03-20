@@ -197,7 +197,9 @@
     #eventV1,
     #eventA1,
     #eventT1,
-    #eventF1
+    #eventF1,
+    #eventQ1,
+    #eventQ2
   
     
      {
@@ -205,7 +207,7 @@
       top: 50%; /* Place the element at the vertical center */
       left: 50%; /* Place the element at the horizontal center */
       transform: translate(-50%, -50%); /* Move the element back by half of its own width and height */
-      font-size: 1.5em; /* Default font size */
+      font-size: 1.2em; /* Default font size */
       color: rgb(250, 136, 6); /* Set font color to green */
       transform: perspective(1000px) rotateY(10deg);
   }
@@ -305,4 +307,21 @@ tbody tr:nth-child(even) {
 }
 
 
+.nonsancontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.nonsanimage {
+  width: 100%; /* Images take full width */
+  margin: 0;
+}
 
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
+  .image {
+    width: 50%; /* Images take 50% width on larger screens */
+  }
+}
