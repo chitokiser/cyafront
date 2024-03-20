@@ -51,7 +51,8 @@ let address= {
   
     tresureContract.on('reward', (amount) => {
      console.log('찾은보물:', amount);
-     document.getElementById('eventT1').innerText = `포인트+ ${amount/1e18} P`;
+     let formattedAmount = (amount / 1e18).toFixed(6);
+     document.getElementById('eventT1').innerText = `포인트+ ${formattedAmount} P`;
      treasureBox.style.display = "none";
      const eventDiv = document.getElementById('eventDiv');
      eventDiv.classList.remove('hidden');
