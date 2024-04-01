@@ -191,6 +191,22 @@
         align-items: center;
         height: 15vh; /* Ensure full height of the viewport */
     }
+    
+  
+    @keyframes explode {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      90% {
+        transform: scale(2);
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  
     #eventR1,
     #eventS1,
     #eventS2,
@@ -199,25 +215,15 @@
     #eventT1,
     #eventF1,
     #eventQ1,
-    #eventQ2
-  
-    
-     {
-      position: fixed;
-      top: 50%; /* Place the element at the vertical center */
-      left: 50%; /* Place the element at the horizontal center */
-      transform: translate(-50%, -50%); /* Move the element back by half of its own width and height */
-      font-size: 1.2em; /* Default font size */
-      color: rgb(250, 136, 6); /* Set font color to green */
-      transform: perspective(1000px) rotateY(10deg);
-  }
-  
-  /* Adjust font size for smaller screens */
-  @media screen and (max-width: 600px) {
-      #eventS2 {
-          font-size: 0.8em; /* Adjust font size for smaller screens */
-      }
-  }
+    #eventQ2 {
+      animation: explode 3s ease forwards;
+      font-size: 24px; /* Adjust font size as needed */
+      color: #ff0000; /* Adjust color as needed */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
 
   .center-content {
     display: flex;
